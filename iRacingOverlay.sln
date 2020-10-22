@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iRacingOverlayService", "src\iRacingOverlayService\iRacingOverlayService.csproj", "{F27B51E1-9023-4B28-8FD7-48859FBC1806}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{065FB7D2-C84E-42D1-B4AE-0296E7CAAC82}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{97EB99C9-EF38-4F54-859E-055931C521B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F27B51E1-9023-4B28-8FD7-48859FBC1806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F27B51E1-9023-4B28-8FD7-48859FBC1806}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F27B51E1-9023-4B28-8FD7-48859FBC1806}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F27B51E1-9023-4B28-8FD7-48859FBC1806}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F27B51E1-9023-4B28-8FD7-48859FBC1806} = {065FB7D2-C84E-42D1-B4AE-0296E7CAAC82}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A48DCBB4-8524-4389-8ACB-A2AD995D979D}
+	EndGlobalSection
+EndGlobal
