@@ -1,0 +1,92 @@
+@page "/"
+
+@using iRacingSDK
+@using iRacingBlazor.Models
+@using System.Data
+@inject iRacingConnection _iRacing
+		@if (data != null && data.IsConnected)
+		{
+			<iRacingBlazor.Shared.StateHeader
+				CurrentTime="@data.Telemetry.SessionTime"
+				SessionState="@data.Telemetry.SessionState"
+				RaceLaps="@data.Telemetry.RaceLaps"
+				TotalRaceLaps="20"
+				/>
+
+			<iRacingBlazor.Shared.Standings Drivers="_drivers" />
+		}
+
+
+
+@code {
+	private DataSample data;
+	private int sessionNumber;
+
+	private List<DriverModel> _drivers = new List<DriverModel>();
+
+	protected override async Task OnInitializedAsync()
+	{
+		var instance = new iRacingEvents();
+		instance.NewData += IRacingOnNewSessionData;
+		instance.Disconnected += InstanceOnDisconnected;
+		instance.NewSessionData += InstanceOnNewSessionData;
+		instance.StartListening();
+	}
+
+	private void InstanceOnNewSessionData(DataSample obj)
+	{
+
+	}
+
+	private void InstanceOnDisconnected()
+	{
+		data = null;
+		StateHasChanged();
+	}
+
+	private void IRacingOnNewSessionData(DataSample obj)
+	{
+		data = obj;
+		sessionNumber = data.Telemetry.SessionNum;
+		FillDrivers(data);
+
+
+		StateHasChanged();
+	}
+
+	private void FillDrivers(DataSample data)
+	{
+		foreach (var driver in data.SessionData.DriverInfo.Drivers)
+		{
+			var existing = _drivers.FirstOrDefault(x => x.Name == driver.UserName);
+
+			if (existing == null)
+			{
+				existing = new DriverModel()
+				{
+					Id = _drivers.Count,
+					Name = driver.UserName,
+					CustomerId = driver.UserID,
+					Number = driver.CarNumber,
+					ClassId = driver.CarClassID,
+					CarClassRelSpeed = driver.CarClassRelSpeed,
+					Rating = driver.IRating,
+					Allow = driver.IsSpectator == 0
+				};
+
+				_drivers.Add(existing);
+			}
+
+			existing.Selected = data.Telemetry.CamCarIdx == driver.CarIdx;
+			existing.Show = data.Telemetry.CarIdxPosition[driver.CarIdx] > 0;
+
+			var sessionInfo = data.SessionData.SessionInfo.Sessions[sessionNumber].ResultsPositions[driver.CarIdx];
+
+			existing.Position = sessionInfo.Position;
+			existing.FastestLapTime = sessionInfo.FastestTime;
+			existing.LastLapTime = sessionInfo.LastTime;
+
+		}
+	}
+
+}

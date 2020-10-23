@@ -9,7 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{065FB7D2-C84
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{97EB99C9-EF38-4F54-859E-055931C521B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iRacingSDK", "src\iRacingSDK\iRacingSDK.csproj", "{02B6FB10-2CA6-4188-BE46-62FA98C6988D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iRacingSDK", "src\iRacingSDK\iRacingSDK.csproj", "{02B6FB10-2CA6-4188-BE46-62FA98C6988D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iRacingBlazor", "src\iRacingBlazor\iRacingBlazor.csproj", "{5C4AD879-06C3-4C16-828F-9D33522B94CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +27,10 @@ Global
 		{02B6FB10-2CA6-4188-BE46-62FA98C6988D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02B6FB10-2CA6-4188-BE46-62FA98C6988D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02B6FB10-2CA6-4188-BE46-62FA98C6988D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C4AD879-06C3-4C16-828F-9D33522B94CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C4AD879-06C3-4C16-828F-9D33522B94CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C4AD879-06C3-4C16-828F-9D33522B94CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C4AD879-06C3-4C16-828F-9D33522B94CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{F27B51E1-9023-4B28-8FD7-48859FBC1806} = {065FB7D2-C84E-42D1-B4AE-0296E7CAAC82}
 		{02B6FB10-2CA6-4188-BE46-62FA98C6988D} = {065FB7D2-C84E-42D1-B4AE-0296E7CAAC82}
+		{5C4AD879-06C3-4C16-828F-9D33522B94CD} = {065FB7D2-C84E-42D1-B4AE-0296E7CAAC82}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A48DCBB4-8524-4389-8ACB-A2AD995D979D}

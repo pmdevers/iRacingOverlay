@@ -1,0 +1,32 @@
+@using iRacingSDK
+<div class="@CssClass("state-header", new { ShowCheckeredFlag = SessionState == SessionState.Checkered })">
+
+	<div class="container">
+		<div id="flagWrapper1" class="flag-wrapper-9x5">
+			<div class="flag-9x5"></div>
+		</div>
+
+		<span class="type">Practice</span>
+		<span class="laps"> - Lap @RaceLaps / 20</span>
+		<span class="time"> - @CurrentTime.Seconds().ToString(@"mm\:ss") / 40:00</span>
+
+		<div id="flagWrapper2" class="flag-wrapper-9x5" >
+			<div class="flag-9x5"></div>
+		</div>
+	</div>
+
+</div>
+
+@code {
+	[Parameter]
+	public double CurrentTime { get; set; }
+
+	[Parameter]
+	public SessionState SessionState { get; set; }
+
+	[Parameter]
+	public int RaceLaps { get; set; }
+
+	[Parameter]
+	public int TotalRaceLaps { get; set; }
+}
