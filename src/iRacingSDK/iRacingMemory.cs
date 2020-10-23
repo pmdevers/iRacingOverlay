@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO.MemoryMappedFiles;
 using System.Runtime.InteropServices;
 using System.Text;
+using Win32.Synchronization;
 
 namespace iRacingSDK
 {
@@ -35,7 +36,7 @@ namespace iRacingSDK
 			if (Accessor != null)
 				return true;
 
-			var dataValidEvent = OpenEvent(Defines.DesiredAccess, false, Defines.DataValidEventName);
+			var dataValidEvent = Event.OpenEvent(Defines.DesiredAccess, false, Defines.DataValidEventName);
 			if (dataValidEvent == IntPtr.Zero)
 			{
 				var lastError = Marshal.GetLastWin32Error();
@@ -71,16 +72,7 @@ namespace iRacingSDK
 		// TODO
 		public bool WaitForData()
 		{
-			return WaitForSingleObject(_dataValidEvent, 17) == 0;
+			return Event.WaitForSingleObject(_dataValidEvent, 17) == 0;
 		}
-
-		//https://github.com/vipoo/iRacingSDK.Net/blob/master/DataFeed.cs
-
-		[DllImport("Kernel32.dll", CharSet = CharSet.Unicode)]
-		private static extern IntPtr OpenEvent(uint dwDesiredAccess, bool bInheritHandle, string lpName);
-
-		[DllImport("coredll.dll", CharSet = CharSet.Unicode)]
-		private static extern int WaitForSingleObject(IntPtr handle, uint waittimeout);
-
 	}
 }

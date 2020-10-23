@@ -1,7 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using iRacingOverlayService.Services;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -9,16 +8,21 @@ namespace iRacingOverlayService
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            await CreateHostBuilder(args).Build().RunAsync();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureServices((hostContext, services) =>
-                {
-                    services.AddHostedService<Worker>();
-                });
+	            .UseWindowsService()
+	            .ConfigureServices(config =>
+	            {
+		            config.AddHostedService<iRacingService>();
+				})
+	            .ConfigureWebHostDefaults(webbuilder =>
+	            {
+		            webbuilder.UseStartup<Startup>();
+	            });
     }
 }

@@ -3,28 +3,29 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Threading;
+using iRacingSDK.Logging;
 
 namespace iRacingSDK
 {
 	    public class iRacingConnection
     {
-        readonly CrossThreadEvents connected = new CrossThreadEvents();
-        readonly CrossThreadEvents disconnected = new CrossThreadEvents();
-        readonly CrossThreadEvents<DataSample> newSessionData = new CrossThreadEvents<DataSample>();
-        
-        DataFeed dataFeed = null;
-        bool isRunning = false;
-        iRacingMemory iRacingMemory;
-        internal bool IsRunning { get { return isRunning; } }
+	    private readonly CrossThreadEvents _connected = new CrossThreadEvents();
+	    private readonly CrossThreadEvents _disconnected = new CrossThreadEvents();
+	    private readonly CrossThreadEvents<DataSample> _newSessionData = new CrossThreadEvents<DataSample>();
 
-        long processingTime;
-        public long ProcessingTime { get { return processingTime * 1000000L / Stopwatch.Frequency; } }
+	    private DataFeed _dataFeed = null;
+	    private bool _isRunning = false;
+	    readonly iRacingMemory _iRacingMemory;
 
-        long waitingTime;
-        public long WaitingTime { get { return waitingTime * 1000000L / Stopwatch.Frequency; } }
+        internal bool IsRunning => _isRunning;
 
-        long yieldTime;
-        public long YieldTime { get { return (yieldTime * 1000000L / Stopwatch.Frequency) ; } }
+        private long _processingTime;
+        private long _waitingTime;
+        private long _yieldTime;
+
+		public long ProcessingTime => _processingTime * 1000000L / Stopwatch.Frequency;
+        public long WaitingTime => _waitingTime * 1000000L / Stopwatch.Frequency;
+        public long YieldTime => (_yieldTime * 1000000L / Stopwatch.Frequency);
 
         public readonly Replay Replay;
         public readonly PitCommand PitCommand;
@@ -33,40 +34,40 @@ namespace iRacingSDK
 
         public event Action Connected
         {
-            add { connected.Event += value; }
-            remove { connected.Event -= value; }
+            add => _connected.Event += value;
+            remove => _connected.Event -= value;
         }
 
         public event Action Disconnected
         {
-            add { disconnected.Event += value; }
-            remove { disconnected.Event -= value; }
+            add => _disconnected.Event += value;
+            remove => _disconnected.Event -= value;
         }
 
         public event Action<DataSample> NewSessionData
         {
-            add { newSessionData.Event += value; }
-            remove { newSessionData.Event -= value; }
+            add => _newSessionData.Event += value;
+            remove => _newSessionData.Event -= value;
         }
 
         public iRacingConnection()
         {
-            this.Replay = new Replay(this);
-            this.PitCommand = new PitCommand();
-            this.iRacingMemory = new iRacingMemory();
+            Replay = new Replay(this);
+            PitCommand = new PitCommand();
+            _iRacingMemory = new iRacingMemory();
         }
 
-        public IEnumerable<DataSample> GetDataFeed(bool logging = true)
-        {
-            return GetRawDataFeed(logging).WithLastSample().WithEvents(connected, disconnected, newSessionData);
-        }
+		public IEnumerable<DataSample> GetDataFeed(bool logging = true)
+		{
+			return GetRawDataFeed(logging).WithLastSample().WithEvents(_connected, _disconnected, _newSessionData);
+		}
 
-        internal IEnumerable<DataSample> GetRawDataFeed(bool logging = true)
+		internal IEnumerable<DataSample> GetRawDataFeed(bool logging = true)
         {
-            if (isRunning)
+            if (_isRunning)
                 throw new Exception("Can not call GetDataFeed concurrently.");
 
-            isRunning = true;
+            _isRunning = true;
             try
             {
                 foreach (var notConnectedSample in WaitForInitialConnection())
@@ -83,16 +84,16 @@ namespace iRacingSDK
             }
             finally
             {
-                isRunning = false;
+                _isRunning = false;
             }
         }
 
         IEnumerable<DataSample> WaitForInitialConnection()
         {
-            bool wasConnected = iRacingMemory.Accessor != null;
+            bool wasConnected = _iRacingMemory.Accessor != null;
             TraceInfo.WriteLineIf(!wasConnected, "Waiting to connect to iRacing application");
 
-            while (!iRacingMemory.IsConnected())
+            while (!_iRacingMemory.IsConnected())
             {
                 yield return DataSample.YetToConnected;
                 Thread.Sleep(10);
@@ -103,8 +104,8 @@ namespace iRacingSDK
 
         IEnumerable<DataSample> AllSamples(bool logging)
         {
-            if (dataFeed == null)
-                dataFeed = new DataFeed(iRacingMemory.Accessor);
+            if (_dataFeed == null)
+                _dataFeed = new DataFeed(_iRacingMemory.Accessor);
 
             var nextTickCount = 0;
             var lastTickTime = DateTime.Now;
@@ -115,12 +116,12 @@ namespace iRacingSDK
             while (true)
             {
                 watchWaitingTime.Restart();
-                iRacingMemory.WaitForData();
-                waitingTime = watchWaitingTime.ElapsedTicks;
+                _iRacingMemory.WaitForData();
+                _waitingTime = watchWaitingTime.ElapsedTicks;
 
                 watchProcessingTime.Restart();
 
-                var data = dataFeed.GetNextDataSample(nextTickCount, logging);
+                var data = _dataFeed.GetNextDataSample(nextTickCount, logging);
                 if (data != null)
                 {
                     if (data.IsConnected)
@@ -135,11 +136,11 @@ namespace iRacingSDK
                         nextTickCount = data.Telemetry.TickCount + 1;
                         lastTickTime = DateTime.Now;
                     }
-                    processingTime = watchProcessingTime.ElapsedTicks;
+                    _processingTime = watchProcessingTime.ElapsedTicks;
 
                     watchProcessingTime.Restart();
                     yield return data;
-                    yieldTime = watchProcessingTime.ElapsedTicks;
+                    _yieldTime = watchProcessingTime.ElapsedTicks;
                 }
             }
         }
