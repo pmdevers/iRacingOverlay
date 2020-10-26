@@ -1,0 +1,9 @@
+﻿@namespace BlazorDesktop.Components
+
+@inherits MenuBarBase
+
+<CascadingValue Value="@this">
+    <div class="menu-bar">
+        @ChildContent
+    </div>
+</CascadingValue>

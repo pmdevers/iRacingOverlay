@@ -2,9 +2,9 @@
 @using Microsoft.AspNetCore.Components
 @inherits AppBarBase
 
-<header class="app-bar">
+<header class="app-bar" >
     <div class="app-bar-icon"></div>
-    <div class="app-bar-content">@ChildContent</div>
+    <div class="app-bar-content" style="-webkit-app-region: drag">@ChildContent</div>
     <div class="app-bar-controls">
         @if (MinimizeBox)
         {
