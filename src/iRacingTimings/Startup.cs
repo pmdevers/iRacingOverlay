@@ -65,7 +65,7 @@ namespace iRacingTimings
             Task.Run(async () => await Electron.WindowManager.CreateBrowserViewAsync());
             Task.Run(async () => await Electron.WindowManager.CreateWindowAsync(new BrowserWindowOptions
             {
-				Transparent = true,
+				//Transparent = true,
 				Frame = false
             }));
         }

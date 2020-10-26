@@ -1,0 +1,23 @@
+@using ElectronNET.API
+@inherits LayoutComponentBase
+
+<AppBar OnClose="Close" OnMinimize="Minimize" OnMaximize="Maximize">
+    iRacing Timings
+</AppBar>
+
+@code
+{
+    private void Maximize(MouseEventArgs args)
+    {
+        Electron.WindowManager.BrowserWindows.First().Maximize();
+    }
+    private void Minimize(MouseEventArgs args)
+    {
+        Electron.WindowManager.BrowserWindows.First().Minimize();
+    }
+
+	private void Close(MouseEventArgs args)
+	{
+		Electron.App.Exit();
+	}
+}
