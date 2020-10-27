@@ -3,13 +3,7 @@
 @inherits MenuBarButtonBase
 
 <CascadingValue Value="@this">
-    <div class="menu-bar-button" @OnClick="OnClickHandler">
-        <div class="menu-bar-title">@Title</div>
-        @if (Selected)
-        {
-            <div class="menu-bar-submenu">
-                @ChildContent
-            </div>
-        }
+    <div class="menu-bar-button @GetClass()" @onclick="OnClickHandler">
+        @ChildContent
     </div>
 </CascadingValue>

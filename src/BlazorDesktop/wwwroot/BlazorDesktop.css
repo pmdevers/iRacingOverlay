@@ -6,8 +6,13 @@
   cursor: default; }
   .app-bar .app-bar-icon {
     flex-grow: 0;
-    max-width: 32px;
-    max-height: 32px; }
+    width: 32px;
+    height: 32px;
+    padding: 4px 0;
+    margin-left: 8px; }
+    .app-bar .app-bar-icon img {
+      width: 20px;
+      height: 20px; }
   .app-bar .app-bar-content {
     flex-grow: 1;
     max-height: 32px;
@@ -17,7 +22,8 @@
   .app-bar .app-bar-controls {
     max-width: 152px;
     max-height: 32px;
-    flex-grow: 0; }
+    flex-grow: 0;
+    flex-shrink: 0; }
   .app-bar .app-bar-button {
     padding: 0;
     margin: 0;
@@ -61,3 +67,22 @@
     .menu-bar > .menu-bar-button:hover {
       background-color: rgba(255, 255, 255, 0.1);
       color: #cccccc; }
+    .menu-bar > .menu-bar-button.open {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #cccccc; }
+  .menu-bar .menu-bar-submenu {
+    background-color: #121212;
+    position: absolute;
+    border: 1px solid darkgrey;
+    min-width: 150px;
+    filter: drop-shadow(0, 4px, 0.75rem, #121212); }
+    .menu-bar .menu-bar-submenu > .menu-bar-button {
+      padding: 0 24px; }
+      .menu-bar .menu-bar-submenu > .menu-bar-button:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #cccccc; }
+  .menu-bar .menu-bar-divider {
+    height: 1px;
+    margin-left: 20px;
+    margin-right: 4px;
+    border-bottom: 1px solid darkgrey; }

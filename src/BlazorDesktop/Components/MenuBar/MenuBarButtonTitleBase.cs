@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 
 namespace BlazorDesktop.Components
 {
-    public class MenuBarSubMenuBase : BaseComponent
+    public class MenuBarButtonTitleBase : BaseComponent
     {
         [Parameter]
         public RenderFragment ChildContent { get; set; }
-
-        [CascadingParameter]
-        public MenuBarButtonBase Button { get; set; }
     }
 }

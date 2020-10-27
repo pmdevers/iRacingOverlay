@@ -27,7 +27,32 @@
         }
 
         &.open {
-
+            background-color: rgba(255,255,255,.1);
+            color: #cccccc;
         }
+    }
+
+    .menu-bar-submenu {
+        background-color: $background;
+        position: absolute;
+        border: 1px solid darkgrey;
+        min-width: 150px;
+        filter: drop-shadow(0, 4px, 0.75rem, $background);
+
+        > .menu-bar-button {
+            padding: 0 24px;
+
+            &:hover {
+                background-color: rgba(255,255,255,.1);
+                color: #cccccc;
+            }
+        }
+    }
+
+    .menu-bar-divider {
+        height: 1px;
+        margin-left: 20px;
+        margin-right: 4px;
+        border-bottom:1px solid darkgrey;
     }
 }

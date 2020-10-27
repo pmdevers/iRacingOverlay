@@ -7,8 +7,15 @@
 
     .app-bar-icon {
         flex-grow: 0;
-        max-width: 32px;
-        max-height: 32px;
+        width: 32px;
+        height: 32px;
+        padding: 4px 0;
+        margin-left: 8px;
+
+        img{
+            width: 20px;
+            height: 20px;
+        }
     }
 
     .app-bar-content {
@@ -23,6 +30,7 @@
         max-width: 152px;
         max-height: 32px;
         flex-grow: 0;
+        flex-shrink: 0;
     }
 
     .app-bar-button {

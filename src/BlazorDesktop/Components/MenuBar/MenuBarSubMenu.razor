@@ -1,6 +1,9 @@
 ﻿@namespace BlazorDesktop.Components
 @inherits MenuBarSubMenuBase
 
-@code {
-
+@if (Button.Selected)
+{
+    <div class="menu-bar-submenu">
+        @ChildContent
+    </div>
 }

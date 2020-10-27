@@ -1,19 +1,26 @@
 @using ElectronNET.API
 @inherits LayoutComponentBase
 
-<AppBar OnClose="Close" OnMinimize="Minimize" OnMaximize="Maximize">
-    <MenuBar>
-
-    </MenuBar>
+<AppBar AppIcon="/img/stopwatch.svg" OnClose="@_window.Close" OnRestore="@_window.Restore" IsMaximized="@_window.IsMaximizedAsync().Result" OnMinimize="@_window.Minimize" OnMaximize="@_window.Maximize">
+    <NavMenu></NavMenu>
 </AppBar>
-
-
+ 
+@Body
 
 @code
 {
+    private BrowserWindow _window;
+    public bool IsMaximized { get; set; } = false;
+
+    public MainLayout()
+    {
+        _window = Electron.WindowManager.BrowserWindows.First();
+    }
+
     private void Maximize(MouseEventArgs args)
     {
         Electron.WindowManager.BrowserWindows.First().Maximize();
+        
     }
     private void Minimize(MouseEventArgs args)
     {

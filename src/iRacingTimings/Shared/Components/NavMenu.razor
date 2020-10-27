@@ -1,5 +1,58 @@
-﻿<h3>NavMenu</h3>
-
+﻿@using ElectronNET.API
+@using ElectronNET.API.Entities
+<MenuBar>
+    <MenuBarButton>
+        <MenuBarButtonTitle>File</MenuBarButtonTitle>
+        <MenuBarSubMenu>
+            @*<MenuBarButton @onclick="OpenFile" AllowSelection="false">
+                <MenuBarButtonTitle>Open File</MenuBarButtonTitle>
+            </MenuBarButton>
+            <MenuBarDivider></MenuBarDivider>
+            <MenuBarButton>
+                <MenuBarButtonTitle>Test</MenuBarButtonTitle>
+            </MenuBarButton>
+            <MenuBarButton>
+                <MenuBarButtonTitle>Test</MenuBarButtonTitle>
+            </MenuBarButton>
+            <MenuBarDivider></MenuBarDivider>*@
+            <MenuBarButton @onclick="Close">
+                <MenuBarButtonTitle >Close</MenuBarButtonTitle>
+            </MenuBarButton>
+        </MenuBarSubMenu>
+    </MenuBarButton>
+        
+    @*<MenuBarButton>
+        <MenuBarButtonTitle>Edit</MenuBarButtonTitle>
+        <MenuBarSubMenu>
+            <MenuBarButton>
+                <MenuBarButtonTitle>Test</MenuBarButtonTitle>
+            </MenuBarButton>
+        </MenuBarSubMenu>
+    </MenuBarButton>
+    <MenuBarButton>
+        <MenuBarButtonTitle>View</MenuBarButtonTitle>
+        <MenuBarSubMenu>
+            <MenuBarButton>
+                <MenuBarButtonTitle>Test</MenuBarButtonTitle>
+            </MenuBarButton>
+        </MenuBarSubMenu>
+    </MenuBarButton>*@
+</MenuBar>
 @code {
 
+    public async Task OpenFile(MouseEventArgs e)
+    {
+        var window = Electron.WindowManager.BrowserWindows.First();
+        await Electron.Dialog.ShowOpenDialogAsync(window, new OpenDialogOptions()
+        {
+            Properties = new [] {OpenDialogProperty.openFile }
+        });
+    }
+
+    public Task Close(MouseEventArgs e)
+    {
+        var window = Electron.WindowManager.BrowserWindows.First();
+        window.Close();
+        return Task.CompletedTask;
+    }
 }

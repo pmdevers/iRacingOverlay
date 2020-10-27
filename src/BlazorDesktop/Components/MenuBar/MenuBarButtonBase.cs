@@ -11,17 +11,11 @@ namespace BlazorDesktop.Components
     public class MenuBarButtonBase : BaseComponent
     {
         [Parameter]
-        public string Title { get; set; }
-
-        [Parameter]
         public RenderFragment ChildContent { get; set; }
-
+        
         [CascadingParameter]
         public MenuBarBase MenuBar { get; set; }
-
-        [CascadingParameter]
-        public MenuBarSubMenuBase SubMenu { get; set; }
-
+        
         [Parameter]
         public ICommand Command { get; set; }
 
@@ -34,8 +28,8 @@ namespace BlazorDesktop.Components
         [Parameter]
         public bool Disabled { get; set; }
 
-        [Parameter]
-        public bool AllowSelection { get; set; }
+        [Parameter] 
+        public bool AllowSelection { get; set; } = true;
 
         [Parameter] 
         public EventCallback<bool> SelectedChanged { get; set; }
@@ -49,11 +43,7 @@ namespace BlazorDesktop.Components
 
             await this.SelectedChanged.InvokeAsync(this.Selected);
 
-            if (MenuBar != null)
-            {
-                await this.MenuBar.ToggleSelectedAsync(this, SubMenu);
-            }
-
+            await MenuBar.ToggleSelectedAsync(this);
             this.StateHasChanged();
         }
 
@@ -74,6 +64,11 @@ namespace BlazorDesktop.Components
             {
                 Command.Execute(CommandParameter);
             }
+        }
+
+        public string GetClass()
+        {
+            return Selected ? "open" : string.Empty;
         }
     }
 }

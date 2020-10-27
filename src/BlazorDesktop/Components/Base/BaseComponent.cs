@@ -10,6 +10,9 @@ namespace BlazorDesktop.Components
 {
 	public class BaseComponent  : ComponentBase, IBaseComponent, IDisposable
 	{
+        [Parameter]
+        public ForwardRef RefBack { get; set; }
+
 		[Inject]
 		protected IJSRuntime Js { get; set; }
 		protected bool Disposed { get; private set; }
