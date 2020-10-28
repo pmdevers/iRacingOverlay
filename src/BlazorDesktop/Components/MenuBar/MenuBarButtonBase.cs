@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Components.Web;
 
 namespace BlazorDesktop.Components
 {
-    public class MenuBarButtonBase : BaseComponent
+    public class MenuBarButtonBase : BaseDomComponent
     {
         [Parameter]
         public RenderFragment ChildContent { get; set; }
@@ -36,6 +36,12 @@ namespace BlazorDesktop.Components
 
         [Parameter]
         public EventCallback<MouseEventArgs> OnClick { get; set; }
+
+        public MenuBarButtonBase()
+        {
+            ClassMapper.Add("menu-bar-button")
+                .If("open", () => Selected);
+        }
 
         public async Task ToggleSelectedAsync()
         {

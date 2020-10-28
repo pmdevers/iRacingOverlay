@@ -19,6 +19,11 @@ namespace BlazorDesktop.Components
             throw new NotImplementedException();
         }
 
+        public MenuBarBase()
+        {
+            ClassMapper.Add("menu-bar");
+        }
+
         public async Task ToggleSelectedAsync(MenuBarButtonBase menuButton)
         {
             if (menuButton.Selected)

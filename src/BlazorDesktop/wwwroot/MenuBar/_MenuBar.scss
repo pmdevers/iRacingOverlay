@@ -1,4 +1,6 @@
-﻿.menu-bar {
+﻿/// <reference path="../_colors.scss" />
+
+.menu-bar {
     display: flex;
     flex-shrink: 1;
     box-sizing: border-box;
@@ -9,12 +11,11 @@
     font: 12px/32px "Segoe UI", Arial, sans-serif;
 
     > .menu-bar-button {
-        color: rgba(204, 204, 204, 0.6);
+        color: $forecolor;
         align-items: center;
         box-sizing: border-box;
         padding: 0 8px;
         cursor: default;
-        -webkit-app-region: no-drag;
         zoom: 1;
         white-space: nowrap;
         outline: 0;
@@ -23,19 +24,19 @@
 
         &:hover {
             background-color: rgba(255,255,255,.1);
-            color: #cccccc;
+            color: $highlight;
         }
 
         &.open {
             background-color: rgba(255,255,255,.1);
-            color: #cccccc;
+            color: $highlight;
         }
     }
 
     .menu-bar-submenu {
         background-color: $background;
         position: absolute;
-        border: 1px solid darkgrey;
+        border: 1px solid $forecolor;
         min-width: 150px;
         filter: drop-shadow(0, 4px, 0.75rem, $background);
 
@@ -44,7 +45,7 @@
 
             &:hover {
                 background-color: rgba(255,255,255,.1);
-                color: #cccccc;
+                color: $highlight;
             }
         }
     }

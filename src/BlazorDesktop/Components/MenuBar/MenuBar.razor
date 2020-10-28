@@ -3,7 +3,7 @@
 @inherits MenuBarBase
 
 <CascadingValue Value="@this">
-    <div class="menu-bar" @ref="Ref">
+    <div class="@ClassMapper.AsString()" @ref="Ref" style="@StyleMapper.AsString()">
         @ChildContent
     </div>
 </CascadingValue>

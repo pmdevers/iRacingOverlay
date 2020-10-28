@@ -1,7 +1,13 @@
 @using ElectronNET.API
 @inherits LayoutComponentBase
 
-<AppBar AppIcon="/img/stopwatch.svg" OnClose="@_window.Close" OnRestore="@_window.Restore" IsMaximized="@_window.IsMaximizedAsync().Result" OnMinimize="@_window.Minimize" OnMaximize="@_window.Maximize">
+<AppBar AppIcon="/img/stopwatch.svg"
+        OnClose="@_window.Close"
+        OnRestore="@_window.Restore"
+        IsMaximized="@_ismaximized"
+        OnMinimize="@_window.Minimize"
+        OnMaximize="@_window.Maximize">
+
     <NavMenu></NavMenu>
 </AppBar>
  
@@ -10,7 +16,16 @@
 @code
 {
     private BrowserWindow _window;
-    public bool IsMaximized { get; set; } = false;
+    private bool _ismaximized;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+        if (!firstRender)
+        {
+            _ismaximized = await _window.IsMaximizedAsync();
+        }
+    }
 
     public MainLayout()
     {

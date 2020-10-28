@@ -3,7 +3,7 @@
 @inherits MenuBarButtonBase
 
 <CascadingValue Value="@this">
-    <div class="menu-bar-button @GetClass()" @onclick="OnClickHandler">
+    <div class="@ClassMapper.AsString()" @onclick="OnClickHandler"  style="@StyleMapper.AsString()">
         @ChildContent
     </div>
 </CascadingValue>

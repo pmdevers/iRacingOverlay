@@ -1,4 +1,6 @@
-﻿.app-bar {
+﻿/// <reference path="../_colors.scss" />
+
+.app-bar {
     display: flex;
     height: 32px;
     background: $background;
@@ -12,7 +14,7 @@
         padding: 4px 0;
         margin-left: 8px;
 
-        img{
+        img {
             width: 20px;
             height: 20px;
         }
@@ -41,9 +43,21 @@
         border: 0;
         outline: 0;
         background: transparent;
+        color: $forecolor;
 
         &:hover {
             background: rgba(255,255,255,.1);
+
+            svg path,
+            svg rect,
+            svg polygon {
+                fill: $highlight;
+            }
+
+            svg {
+                width: 10px;
+                height: 10px;
+            }
         }
 
         &.close:hover {
