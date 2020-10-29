@@ -2,7 +2,14 @@
 @using iRacingTimings.Shared.Components
 @inherits LayoutComponentBase
 
-<AppBar AppIcon="/img/stopwatch.svg" OnClose="@Close" OnMinimize="@Minimize" OnMaximize="@Maximize" IsMaximizable="IsMaximizable">
+<AppBar AppIcon="/img/stopwatch.svg" 
+        OnClose="@Close" 
+        OnMinimize="@Minimize" 
+        OnMaximize="@Maximize" 
+        IsMaximizable="IsMaximizable"
+        MaximizeBox="@(_window != null)"
+        MinimizeBox="@(_window != null)"
+        >
     iRacingTimings @debugText
 </AppBar>
 <BFUCommandBar Items=@items /> 
@@ -32,11 +39,6 @@
     protected override async Task OnInitializedAsync()
     {
         _window = Electron.WindowManager.BrowserWindows.FirstOrDefault();
-        if (_window != null)
-        {
-            IsMaximizable = await _window.IsMaximizableAsync();
-        }
-
         buttonCommand = new RelayCommand((p) =>
         {
             debugText = $"{p.ToString()} button was clicked. {commandCount++}";

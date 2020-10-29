@@ -6,6 +6,11 @@
     <Content Remove="compilerconfig.json" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\appstore.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="BlazorFluentUI.AllComponents" Version="3.1.6" />
     <PackageReference Include="ElectronNET.API" Version="9.31.2" />
   </ItemGroup>

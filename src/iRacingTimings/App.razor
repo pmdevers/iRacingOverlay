@@ -1,4 +1,6 @@
-﻿<BFUTheme>
+﻿@using ElectronNET.API
+@using ElectronNET.API.Entities
+<BFUTheme>
     <BFULayerHost Style="display:flex; flex-direction: column;width:100vw">
     <Router AppAssembly="@typeof(Program).Assembly">
         <Found Context="routeData">
@@ -21,6 +23,24 @@
     protected override void OnInitialized()
     {
         ThemeProvider.UpdateTheme(new DefaultPaletteDark());    
+
+        var menu = new MenuItem[] {
+            new MenuItem 
+            { 
+                Label = "Create Contact", 
+                Click = () => Electron
+                    .WindowManager
+                    .BrowserWindows
+                    .First()
+                    .LoadURL($"http://localhost:{BridgeSettings.WebPort}/Contacts/Create")
+            },
+            new MenuItem 
+            { 
+                Label = "Remove", 
+                Click = () => Electron.Tray.Destroy()
+            }
+        };
+        Electron.Tray.Show("/Assets/appstore.png", menu);
         base.OnInitialized();
     }
 }

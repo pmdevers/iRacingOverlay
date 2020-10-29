@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -30,6 +32,13 @@ namespace iRacingTimings.Shared.Components
         public AppBarBase()
         {
             
+        }
+
+        protected async Task Maximize(MouseEventArgs e)
+        {
+            IsMaximizable = !IsMaximizable;
+            await OnMaximize.InvokeAsync(e);
+            StateHasChanged();
         }
 
         public string GetIcon()
