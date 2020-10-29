@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace BlazorDesktop.Components
+namespace iRacingTimings.Shared.Components
 {
 	public class BaseComponent  : ComponentBase, IBaseComponent, IDisposable
 	{

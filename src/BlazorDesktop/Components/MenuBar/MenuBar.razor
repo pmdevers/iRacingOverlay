@@ -1,9 +1,0 @@
-﻿@namespace BlazorDesktop.Components
-
-@inherits MenuBarBase
-
-<CascadingValue Value="@this">
-    <div class="@ClassMapper.AsString()" @ref="Ref" style="@StyleMapper.AsString()">
-        @ChildContent
-    </div>
-</CascadingValue>

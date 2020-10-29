@@ -1,4 +1,100 @@
-body {
-    background-color: #1e1e1e;
+﻿.app-bar {
+  display: flex;
+  height: 32px;
+  background: #121212;
+  user-select: none;
+  cursor: default; }
+  .app-bar .app-bar-icon {
+    flex-grow: 0;
+    width: 32px;
+    height: 32px;
+    padding: 4px 0;
+    margin-left: 8px; }
+    .app-bar .app-bar-icon img {
+      width: 20px;
+      height: 20px; }
+  .app-bar .app-bar-content {
+    flex-grow: 1;
+    max-height: 32px;
+    width: auto;
+    font: 12px/32px "Segoe UI", Arial, sans-serif;
+    color: rgba(204, 204, 204, 0.6); }
+  .app-bar .app-bar-controls {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 0;
+    flex-shrink: 0;
+    max-width: 144px;
+    max-height: 32px; }
+  .app-bar .app-bar-button {
+    padding: 0;
     margin: 0;
-}
+    width: 48px;
+    height: 32px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: rgba(204, 204, 204, 0.6); }
+    .app-bar .app-bar-button:hover {
+      background: rgba(255, 255, 255, 0.1); }
+      .app-bar .app-bar-button:hover svg path,
+      .app-bar .app-bar-button:hover svg rect,
+      .app-bar .app-bar-button:hover svg polygon {
+        fill: #ffffff; }
+      .app-bar .app-bar-button:hover svg {
+        width: 10px;
+        height: 10px; }
+    .app-bar .app-bar-button.close:hover {
+      background: #e81123; }
+    .app-bar .app-bar-button svg path,
+    .app-bar .app-bar-button svg rect,
+    .app-bar .app-bar-button svg polygon {
+      fill: rgba(204, 204, 204, 0.6); }
+    .app-bar .app-bar-button svg {
+      width: 10px;
+      height: 10px; }
+
+.menu-bar {
+  display: flex;
+  flex-shrink: 1;
+  box-sizing: border-box;
+  height: 30px;
+  overflow: hidden;
+  flex-wrap: wrap;
+  color: rgba(204, 204, 204, 0.6);
+  font: 12px/32px "Segoe UI", Arial, sans-serif; }
+  .menu-bar > .menu-bar-button {
+    color: rgba(204, 204, 204, 0.6);
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 8px;
+    cursor: default;
+    zoom: 1;
+    white-space: nowrap;
+    outline: 0;
+    line-height: 30px; }
+    .menu-bar > .menu-bar-button:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #ffffff; }
+    .menu-bar > .menu-bar-button.open {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #ffffff; }
+  .menu-bar .menu-bar-submenu {
+    background-color: #121212;
+    position: absolute;
+    border: 1px solid rgba(204, 204, 204, 0.6);
+    min-width: 150px;
+    filter: drop-shadow(0, 4px, 0.75rem, #121212); }
+    .menu-bar .menu-bar-submenu > .menu-bar-button {
+      padding: 0 24px; }
+      .menu-bar .menu-bar-submenu > .menu-bar-button:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #ffffff; }
+  .menu-bar .menu-bar-divider {
+    height: 1px;
+    margin-left: 20px;
+    margin-right: 4px;
+    border-bottom: 1px solid darkgrey; }
+
+body {
+  margin: 0; }

@@ -1,4 +1,4 @@
-@namespace BlazorDesktop.Components
+@namespace iRacingTimings.Shared.Components
 @using Microsoft.AspNetCore.Components
 @inherits AppBarBase
 
@@ -20,18 +20,16 @@
 
         @if (MaximizeBox)
         {
-            if (!IsMaximized)
+            <button class="app-bar-button maximize" @onclick="OnMaximize">
+            @if (IsMaximizable)
             {
-                <button class="app-bar-button maximize" @onclick="OnMaximize">
                     <svg viewBox="0 0 10 10"><path d="M0,0v10h10V0H0z M9,9H1V1h8V9z" /></svg>
-                </button>
             }
             else
             {
-                <button class="app-bar-button maximize" @onclick="OnRestore">
                     <svg viewBox="0 0 10.2 10.1"><path d="M2.1,0v2H0v8.1h8.2v-2h2V0H2.1z M7.2,9.2H1.1V3h6.1V9.2z M9.2,7.1h-1V2H3.1V1h6.1V7.1z" /></svg>
-                </button>
             }
+            </button>
         }
 
         <button class="app-bar-button close" @onclick="OnClose">

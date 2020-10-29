@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iRacingBlazor", "src\iRacin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iRacingTimings", "src\iRacingTimings\iRacingTimings.csproj", "{2E7713CB-E05E-40A5-B561-85920D91A905}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDesktop", "src\BlazorDesktop\BlazorDesktop.csproj", "{D347C092-9284-4628-B62D-32F4286629D7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,10 +37,6 @@ Global
 		{2E7713CB-E05E-40A5-B561-85920D91A905}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E7713CB-E05E-40A5-B561-85920D91A905}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E7713CB-E05E-40A5-B561-85920D91A905}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D347C092-9284-4628-B62D-32F4286629D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D347C092-9284-4628-B62D-32F4286629D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D347C092-9284-4628-B62D-32F4286629D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D347C092-9284-4628-B62D-32F4286629D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,7 +46,6 @@ Global
 		{02B6FB10-2CA6-4188-BE46-62FA98C6988D} = {065FB7D2-C84E-42D1-B4AE-0296E7CAAC82}
 		{5C4AD879-06C3-4C16-828F-9D33522B94CD} = {065FB7D2-C84E-42D1-B4AE-0296E7CAAC82}
 		{2E7713CB-E05E-40A5-B561-85920D91A905} = {065FB7D2-C84E-42D1-B4AE-0296E7CAAC82}
-		{D347C092-9284-4628-B62D-32F4286629D7} = {065FB7D2-C84E-42D1-B4AE-0296E7CAAC82}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A48DCBB4-8524-4389-8ACB-A2AD995D979D}

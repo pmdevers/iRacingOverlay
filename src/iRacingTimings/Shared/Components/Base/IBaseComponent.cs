@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BlazorDesktop.Components
+namespace iRacingTimings.Shared.Components
 {
 	public interface IBaseComponent
 	{

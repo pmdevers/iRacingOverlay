@@ -1,9 +1,0 @@
-﻿@namespace BlazorDesktop.Components
-
-@inherits MenuBarButtonBase
-
-<CascadingValue Value="@this">
-    <div class="@ClassMapper.AsString()" @onclick="OnClickHandler"  style="@StyleMapper.AsString()">
-        @ChildContent
-    </div>
-</CascadingValue>

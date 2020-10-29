@@ -1,11 +1,26 @@
-﻿
-<Router AppAssembly="@typeof(Program).Assembly">
-    <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-    </Found>
-    <NotFound>
-        <LayoutView Layout="@typeof(MainLayout)">
-            <p>Sorry, there's nothing at this address.</p>
-        </LayoutView>
-    </NotFound>
-</Router>
+﻿<BFUTheme>
+    <BFULayerHost Style="display:flex; flex-direction: column;width:100vw">
+    <Router AppAssembly="@typeof(Program).Assembly">
+        <Found Context="routeData">
+            <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>
+        </Found>
+        <NotFound>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p>Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </NotFound>
+    </Router>
+    </BFULayerHost>
+</BFUTheme>
+
+@code
+{
+    [Inject]
+    public ThemeProvider ThemeProvider { get; set; }
+
+    protected override void OnInitialized()
+    {
+        ThemeProvider.UpdateTheme(new DefaultPaletteDark());    
+        base.OnInitialized();
+    }
+}

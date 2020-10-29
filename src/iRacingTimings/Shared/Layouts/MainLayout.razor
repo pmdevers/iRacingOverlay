@@ -1,49 +1,102 @@
 @using ElectronNET.API
+@using iRacingTimings.Shared.Components
 @inherits LayoutComponentBase
 
-<AppBar AppIcon="/img/stopwatch.svg"
-        OnClose="@_window.Close"
-        OnRestore="@_window.Restore"
-        IsMaximized="@_ismaximized"
-        OnMinimize="@_window.Minimize"
-        OnMaximize="@_window.Maximize">
-
-    <NavMenu></NavMenu>
+<AppBar AppIcon="/img/stopwatch.svg" OnClose="@Close" OnMinimize="@Minimize" OnMaximize="@Maximize" IsMaximizable="IsMaximizable">
+    iRacingTimings @debugText
 </AppBar>
- 
+<BFUCommandBar Items=@items /> 
+
 @Body
 
 @code
 {
+   private System.Windows.Input.ICommand buttonCommand;
     private BrowserWindow _window;
-    private bool _ismaximized;
+    private bool IsMaximizable;
+    private int commandCount = 0;
+    private string debugText;
+    private List<BFUCommandBarItem> items;
+    private List<BFUCommandBarItem> farItems;
+    private List<BFUCommandBarItem> overflowItems;
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    private Action<ItemClickedArgs> OnClick => args =>
     {
-        await base.OnAfterRenderAsync(firstRender);
-        if (!firstRender)
+        var item = farItems.FirstOrDefault(x => x.Key == args.Key);
+        if (item != null)
         {
-            _ismaximized = await _window.IsMaximizedAsync();
+            item.Checked = !item.Checked;
         }
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        _window = Electron.WindowManager.BrowserWindows.FirstOrDefault();
+        if (_window != null)
+        {
+            IsMaximizable = await _window.IsMaximizableAsync();
+        }
+
+        buttonCommand = new RelayCommand((p) =>
+        {
+            debugText = $"{p.ToString()} button was clicked. {commandCount++}";
+            StateHasChanged();
+        });
+
+        items = new List<BFUCommandBarItem> {
+        new BFUCommandBarItem() { Text= "First", IconName="Home", Key="1", Command=buttonCommand, CommandParameter="First"},
+        new BFUCommandBarItem() {Text= "Second", IconName="Add", Key="2", Command=buttonCommand, CommandParameter="Second"},
+        new BFUCommandBarItem() {Text= "Third", IconName="Remove", Key="3", Command=buttonCommand, CommandParameter="Third"},
+        new BFUCommandBarItem() {Text= "Fourth", IconName="Save", Key="4", Command=buttonCommand, CommandParameter="Fourth"}
+        };
+
+        overflowItems = new List<BFUCommandBarItem> {
+        new BFUCommandBarItem() { Text= "First", IconName="Home", Key="9",  Command=buttonCommand, CommandParameter="First Overflow"},
+        new BFUCommandBarItem() {Text= "Second", IconName="Home", Key="10", Command=buttonCommand, CommandParameter="Second Overflow"},
+        new BFUCommandBarItem() {Text= "Third", IconName="Home", Key="11", Command=buttonCommand, CommandParameter="Third Overflow"},
+        new BFUCommandBarItem() {Text= "Fourth", IconName="Home", Key="12", Command=buttonCommand, CommandParameter="Fourth Overflow"}
+    };
+
+        farItems = new List<BFUCommandBarItem> {
+        new BFUCommandBarItem() { Text= "First", IconName="Info", Key="5",IconOnly=true, CanCheck=true, OnClick=@OnClick, Command=buttonCommand, CommandParameter="First Far"},
+        new BFUCommandBarItem() {Text= "Second", IconName="Share", Key="6",IconOnly=true, CanCheck=true, OnClick=@OnClick, Command=buttonCommand, CommandParameter="Second Far"},
+        new BFUCommandBarItem() {Text= "Third", IconName="Tiles", Key="7", IconOnly=true, CanCheck=true, OnClick=@OnClick, Command=buttonCommand, CommandParameter="Third Far"},
+        new BFUCommandBarItem() {Text= "Fourth", IconName="SortLines", Key="8",IconOnly=true, CanCheck=true, OnClick=@OnClick, Command=buttonCommand, CommandParameter="Fourth Far"}
+    };
+
     }
 
-    public MainLayout()
+    private async Task Maximize()
     {
-        _window = Electron.WindowManager.BrowserWindows.First();
+        if (_window == null)
+        {
+            return;
+        }
+        IsMaximizable = await _window.IsMaximizableAsync();
+
+        if (IsMaximizable)
+        {
+            _window.Maximize();
+        }
+        else
+        {
+            _window.Restore();   
+        }
+
+        StateHasChanged();
     }
 
-    private void Maximize(MouseEventArgs args)
+    private void Minimize()
     {
-        Electron.WindowManager.BrowserWindows.First().Maximize();
-        
-    }
-    private void Minimize(MouseEventArgs args)
-    {
-        Electron.WindowManager.BrowserWindows.First().Minimize();
+        _window?.Minimize();
     }
 
-	private void Close(MouseEventArgs args)
-	{
-		Electron.App.Exit();
-	}
+    private void Close()
+    {
+        if (_window == null)
+        {
+            return;
+        }
+        Electron.App.Exit();
+    }
 }

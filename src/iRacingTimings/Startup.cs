@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using BlazorFluentUI;
+
 using ElectronNET.API;
 using ElectronNET.API.Entities;
 
@@ -30,9 +32,11 @@ namespace iRacingTimings
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddBlazorFluentUI();
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,13 +64,11 @@ namespace iRacingTimings
                 endpoints.MapFallbackToPage("/_Host");
             });
 
-			
-
             Task.Run(async () => await Electron.WindowManager.CreateBrowserViewAsync());
             Task.Run(async () => await Electron.WindowManager.CreateWindowAsync(new BrowserWindowOptions
             {
 				//Transparent = true,
-				Frame = false
+                Frame = false
             }));
         }
     }
