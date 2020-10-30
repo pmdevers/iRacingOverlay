@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iRacingOverlayService", "src\iRacingOverlayService\iRacingOverlayService.csproj", "{F27B51E1-9023-4B28-8FD7-48859FBC1806}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{065FB7D2-C84E-42D1-B4AE-0296E7CAAC82}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{97EB99C9-EF38-4F54-859E-055931C521B5}"
@@ -21,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F27B51E1-9023-4B28-8FD7-48859FBC1806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F27B51E1-9023-4B28-8FD7-48859FBC1806}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F27B51E1-9023-4B28-8FD7-48859FBC1806}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F27B51E1-9023-4B28-8FD7-48859FBC1806}.Release|Any CPU.Build.0 = Release|Any CPU
 		{02B6FB10-2CA6-4188-BE46-62FA98C6988D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{02B6FB10-2CA6-4188-BE46-62FA98C6988D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02B6FB10-2CA6-4188-BE46-62FA98C6988D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -42,7 +36,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{F27B51E1-9023-4B28-8FD7-48859FBC1806} = {065FB7D2-C84E-42D1-B4AE-0296E7CAAC82}
 		{02B6FB10-2CA6-4188-BE46-62FA98C6988D} = {065FB7D2-C84E-42D1-B4AE-0296E7CAAC82}
 		{5C4AD879-06C3-4C16-828F-9D33522B94CD} = {065FB7D2-C84E-42D1-B4AE-0296E7CAAC82}
 		{2E7713CB-E05E-40A5-B561-85920D91A905} = {065FB7D2-C84E-42D1-B4AE-0296E7CAAC82}

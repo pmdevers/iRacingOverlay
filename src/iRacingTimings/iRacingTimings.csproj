@@ -3,6 +3,12 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Hubs\**" />
+    <Content Remove="Hubs\**" />
+    <EmbeddedResource Remove="Hubs\**" />
+    <None Remove="Hubs\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Remove="compilerconfig.json" />
   </ItemGroup>
   <ItemGroup>
@@ -13,6 +19,7 @@
   <ItemGroup>
     <PackageReference Include="BlazorFluentUI.AllComponents" Version="3.1.6" />
     <PackageReference Include="ElectronNET.API" Version="9.31.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="electron.manifest.json">
@@ -20,9 +27,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Hubs\" />
+    <None Include="compilerconfig.json" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="compilerconfig.json" />
+    <ProjectReference Include="..\iRacingSDK\iRacingSDK.csproj" />
   </ItemGroup>
 </Project>

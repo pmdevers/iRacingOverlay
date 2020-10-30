@@ -16,6 +16,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using iRacingTimings.Data;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace iRacingTimings
 {
@@ -35,8 +36,8 @@ namespace iRacingTimings
             services.AddBlazorFluentUI();
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
-
+            
+            services.AddSingleton<TimingsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
