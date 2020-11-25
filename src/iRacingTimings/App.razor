@@ -1,7 +1,6 @@
 ﻿@using ElectronNET.API
 @using ElectronNET.API.Entities
-<BFUTheme>
-    <BFULayerHost Style="display:flex; flex-direction: column;width:100vw">
+
     <Router AppAssembly="@typeof(Program).Assembly">
         <Found Context="routeData">
             <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)"/>
@@ -12,8 +11,6 @@
             </LayoutView>
         </NotFound>
     </Router>
-    </BFULayerHost>
-</BFUTheme>
 
 @code
 {

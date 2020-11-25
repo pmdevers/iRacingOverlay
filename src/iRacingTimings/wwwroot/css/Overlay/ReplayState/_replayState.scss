@@ -1,0 +1,30 @@
+﻿/// <reference path="../_variables.scss" />
+
+.layout {
+    > .replay-state {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        background: $replay-state-background-color;
+        color: $text-color;
+        font-family: $medium-font;
+        font-size: $normal-font-size;
+        letter-spacing: +2px;
+        padding-left: 1.4em;
+        padding-top: 0.2em;
+        padding-bottom: 0.2em;
+        padding-right: 1.4em;
+        animation-name: replay-blink;
+        animation-duration: 0.5s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-timing-function: linear;
+        transition: opacity 0.3s;
+        display: block;        
+
+        &.hide {
+            display: block;
+            opacity: 0;
+        }
+    }
+}

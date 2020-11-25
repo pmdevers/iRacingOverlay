@@ -1,0 +1,35 @@
+﻿@namespace iRacingTimings.Shared.Components.Overlay
+@inherits StateHeaderBase
+
+<div id="stateHeader" class="@ClassMapper.AsString()">
+    <div id="container" class="container">
+        <Flag Id="flagWrapper1" Scale="FlagScale.flag9x5"></Flag>
+        <div id="type" class="type">@SessionType - </div>
+        @if (IsRace)
+        {
+            @if (IsLimitedSessionLaps)
+            {
+                <div id="laps" class="laps">@Lap / @Laps - </div>
+            }
+            else if (Lap > 0)
+            {
+                <div id="laps" class="laps">Lap @Lap - </div>
+            }
+
+            @if (IsLimitedTime)
+            {
+                <div id="time" class="time">@TimeRemain / @Time </div>
+            }
+            else
+            {
+                <div id="time" class="time">@TimeRemain </div>
+            }
+
+        }
+        else
+        {
+            <div id="time" class="time"> @TimeRemain </div>
+        }
+        <Flag Id="flagWrapper2" Scale="FlagScale.flag9x5"></Flag>
+    </div>
+</div>

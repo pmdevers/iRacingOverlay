@@ -1,0 +1,15 @@
+﻿@namespace iRacingTimings.Shared.Components.Overlay
+@inherits TwitchBase
+
+
+<div id="@Id" class="@ClassMapper.AsString()" style="@StyleMapper.AsString()">
+@foreach (var message in Messages)
+{
+    <div class="message-wrapper">
+        
+        @message.IsSubscriber 
+        
+        <p>@message.Message</p>
+    </div>
+}
+</div>

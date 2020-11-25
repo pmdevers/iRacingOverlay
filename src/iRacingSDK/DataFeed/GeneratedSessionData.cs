@@ -251,6 +251,8 @@ namespace iRacingSDK
 				public string CarNumberDesignStr { get; set; }
 				public long CarSponsor_1 { get; set; }
 				public long CarSponsor_2 { get; set; }
+				public string ClubName { get; set; }
+				public string DivisionName { get; set; }
 			}
 
 			public _Drivers[] Drivers { get; set; }

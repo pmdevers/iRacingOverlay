@@ -27,6 +27,8 @@ namespace iRacingSDK
 			_period = period;
 		}
 
+        public bool IsListening => _backListener != null;
+
 		/// <summary>
 		/// 
 		/// </summary>
@@ -63,7 +65,7 @@ namespace iRacingSDK
 		public void StartListening()
 		{
 			if (_backListener != null)
-				throw new Exception("Already listening to iRacing data");
+                throw new Exception("Already listening to iRacing data");
 
 			_requestCancel = false;
 
@@ -91,7 +93,10 @@ namespace iRacingSDK
 
 			try
 			{
-				foreach (var d in _instance.GetDataFeed(logging: false))
+				foreach (var d in _instance.GetDataFeed(logging: false)
+                    .WithFinishingStatus()
+                    .WithCorrectedPercentages()
+                    .WithFastestLaps())
 				{
 					if (_requestCancel)
 						return;

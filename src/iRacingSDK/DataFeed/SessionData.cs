@@ -28,56 +28,57 @@ namespace iRacingSDK
 		{
 			public partial class _Drivers
 			{
-				public bool IsPaceCar { get { return this.CarIdx == 0; } }
-			}
+				public bool IsPaceCar => CarIdx == 0;
+            }
 
-			_Drivers[] competingDrivers = null;
+            private _Drivers[] _competingDrivers = null;
 
 			public _Drivers[] CompetingDrivers
 			{
 				get
 				{
-					if (competingDrivers != null)
-						return competingDrivers;
+					if (_competingDrivers != null)
+						return _competingDrivers;
 
-					competingDrivers = new _Drivers[this.Drivers.MaxLength()];
+					_competingDrivers = new _Drivers[this.Drivers.MaxLength()];
 
 					foreach (var d in this.Drivers)
-						if (d.CarIdx < competingDrivers.Length)
-							competingDrivers[d.CarIdx] = d;
+						if (d.CarIdx < _competingDrivers.Length)
+							_competingDrivers[d.CarIdx] = d;
 
-					for (var i = 0; i < competingDrivers.Length; i++)
-						if (competingDrivers[i] == null)
-							competingDrivers[i] = new _Drivers
-							{
-								UserName = "",
-								AbbrevName = "",
-								Initials = "",
-								TeamName = "",
-								CarNumber = "",
-								CarPath = "",
-								CarScreenName = "",
-								CarScreenNameShort = "",
-								CarClassShortName = "",
-								CarClassMaxFuel = "",
-								CarClassWeightPenalty = "",
-								CarClassColor = "",
-								LicString = "",
-								LicColor = "",
-								CarDesignStr = "",
-								HelmetDesignStr = "",
-								SuitDesignStr = "",
-								CarNumberDesignStr = ""
-							};
+					for (var i = 0; i < _competingDrivers.Length; i++)
+						_competingDrivers[i] ??= new _Drivers
+                        {
+                            UserName = "",
+                            AbbrevName = "",
+                            Initials = "",
+                            TeamName = "",
+                            CarNumber = "",
+                            CarPath = "",
+                            CarScreenName = "",
+                            CarScreenNameShort = "",
+                            CarClassShortName = "",
+                            CarClassMaxFuel = "",
+                            CarClassWeightPenalty = "",
+                            CarClassColor = "",
+                            LicString = "",
+                            LicColor = "",
+                            CarDesignStr = "",
+                            HelmetDesignStr = "",
+                            SuitDesignStr = "",
+                            CarNumberDesignStr = "",
+							ClubName = "",
+							DivisionName = "",
+                        };
 
-					return competingDrivers;
+					return _competingDrivers;
 				}
 			}
 
 		}
 	}
 
-	public static class _SessionExtensions
+	public static class SessionExtensions
 	{
 		public static SessionData._SessionInfo._Sessions Qualifying(this SessionData._SessionInfo._Sessions[] sessions)
 		{

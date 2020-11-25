@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using iRacingSDK.Logging;
 
@@ -11,12 +13,14 @@ namespace iRacingSDK
 		readonly int carIdx;
 		readonly Telemetry telemetry;
 		readonly SessionData._DriverInfo._Drivers driver;
+        private readonly string[] _names;
 
 		public CarDetails(Telemetry telemetry, int carIdx)
 		{
 			this.telemetry = telemetry;
 			this.carIdx = carIdx;
 			this.driver = telemetry.SessionData.DriverInfo.CompetingDrivers[carIdx];
+            _names = driver.UserName.Split(" ");
 		}
 
 		public int Index { get { return carIdx; } }
@@ -24,9 +28,18 @@ namespace iRacingSDK
 		public SessionData._DriverInfo._Drivers Driver { get { return driver; } }
 		public string CarNumberDisplay { get { return driver == null ? "" : driver.CarNumber; } }
 		public short CarNumberRaw { get { return driver == null ? (short)-1 : (short)driver.CarNumberRaw; } }
+		public string[] CarNumberDesign
+        {
+            get { return driver == null ? "0,0,FFFFFF,777777,000000".Split(',') : driver.CarNumberDesignStr.Split(','); }
+        }
 		public string UserName { get { return driver == null ? "Unknown" : driver.UserName; } }
 		public bool IsPaceCar { get { return carIdx == 0; } }
 
+        public string FirstName => _names.First();
+        public string LastName => _names.Last();
+        public string Suffix => string.Join(" ", _names.Skip(1).SkipLast(1));
+        public string Color => "#" + driver.CarClassColor.Substring(2);
+        public string ClubName => driver.ClubName;
 
 		public Car Car(DataSample data)
 		{
@@ -39,7 +52,9 @@ namespace iRacingSDK
 		readonly int carIdx;
 		readonly Telemetry telemetry;
 		readonly SessionData._DriverInfo._Drivers driver;
-		public readonly CarDetails Details;
+        
+        
+        public readonly CarDetails Details;
 
 		public Car(Telemetry telemetry, int carIdx)
 		{
@@ -47,12 +62,13 @@ namespace iRacingSDK
 			this.carIdx = carIdx;
 			this.driver = telemetry.SessionData.DriverInfo.CompetingDrivers[carIdx];
 			this.Details = new CarDetails(telemetry, carIdx);
-		}
+            
+        }
 
 		public int Index { get { return carIdx; } }
 		public int CarIdx { get { return carIdx; } }
 
-		public int Lap { get { return telemetry.CarIdxLap[carIdx]; } }
+        public int Lap { get { return telemetry.CarIdxLap[carIdx]; } }
 		public float DistancePercentage { get { return telemetry.CarIdxLapDistPct[carIdx]; } }
 		public float TotalDistance { get { return this.Lap + this.DistancePercentage; } }
 		public LapSector LapSector { get { return telemetry.CarSectorIdx[carIdx]; } }

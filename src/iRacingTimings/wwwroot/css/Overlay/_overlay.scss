@@ -1,0 +1,64 @@
+﻿@import '_variables.scss';
+@import 'AdminMessage/_admin-message.scss';
+@import 'Logo/_logo.scss';
+@import 'ReplayState/_replayState.scss';
+@import 'StateHeader/_state-header.scss';
+@import 'Standings/_standings.scss';
+@import 'DriverInfo/_driver-info.scss';
+@import 'Twitch/_twitch.scss';
+
+
+.position-wrapper {
+    float: left;
+    overflow: hidden;
+    width: 45px;
+    height: 27px;
+    background: $driver-position-background-color;
+    clip-path: polygon(0px 0px, 44px 0px, 28px 28px, 0px 28px);
+     
+    > .position {
+        text-align: center;
+        vertical-align: middle;
+        line-height: 29px;
+        width: 34px;
+        letter-spacing: -1px;
+        font-family: $medium-font;
+        color:$driver-position-text-color;
+        text-shadow: $driver-position-text-shadow;
+    }
+}
+
+
+
+
+.color-stripe {
+    float: left;
+    overflow: hidden;
+    width: 7px;
+    height: 27px;
+    background: transparent;
+    transform: skewX(-30deg) translateX(-7px);
+}
+
+.driver-background,
+.multicar-team-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: $driver-background-color-darker;
+}
+
+.odd .driver-background,
+.odd .multicar-team-background {
+    clip-path: polygon(0px 0px, 55px 0px, 39px 28px, 0px 28px);
+}
+
+
+
+.overlay {
+    margin: 0;
+    overflow: hidden;
+    opacity: 1;
+}

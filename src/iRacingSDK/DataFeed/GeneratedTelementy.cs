@@ -38,6 +38,8 @@ namespace iRacingSDK
 		/// </summary>
 		public System.Double SessionTimeRemain { get { return (System.Double)this["SessionTimeRemain"]; } }
 
+		public System.Int32 SessionLaps { get { return (System.Int32)this["SessionLaps"]; } }
+
 		/// <summary>
 		/// Old laps left till session ends use SessionLapsRemainEx
 		/// </summary>

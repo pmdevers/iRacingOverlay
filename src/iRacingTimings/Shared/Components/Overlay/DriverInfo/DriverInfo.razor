@@ -1,0 +1,37 @@
+﻿@namespace iRacingTimings.Shared.Components.Overlay
+@inherits DriverInfoBase
+
+
+<div id="driverDetails" class="@ClassMapper.AsString()" style="@StyleMapper.AsString()">
+    <div id="dataWrapper" class="data-wrapper driver-wrapper">
+        <div id="upperDataWrapper" class="upper-data-wrapper driver">
+            <Position>@Position</Position>
+            <ColorStripe Color="@Color"></ColorStripe>
+            <div id="container" class="container">
+                <div id="nameWrapper" class="name-wrapper">
+                    <div id="firstName" class="first-name">@FirstName</div>
+                    <div id="lastName" class="last-name">@LastName</div>
+                    <div id="suffix" class="suffix">@Suffix</div>
+                </div>
+                <img id="flag" class="flag" src="@FlagImage">
+                <CarNumber Car="@Car"></CarNumber>
+                <div id="gain" class="gain">@Gain</div>
+            </div>
+        </div>
+        <div id="middleDataWrapper" class="middle-data-wrapper">
+            <div id="text" class="text"></div>
+        </div>
+        <div id="lowerDataWrapper" class="lower-data-wrapper">
+            <div id="text1" class="text1"></div>
+            <div id="data1" class="data1"></div>
+            <div id="text2" class="text2"></div>
+            <div id="data2" class="data2"></div>
+        </div>
+        <div id="photoWrapper" class="photo-wrapper">
+            <img id="photo" class="photo" src="./img/empty.png" >
+        </div>
+    </div>
+    <div id="videoStreamWrapper" class="video-stream-wrapper">
+        <video autoplay="autoplay" id="videoStream" class="video-stream"></video>
+    </div>
+</div>

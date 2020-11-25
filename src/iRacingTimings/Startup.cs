@@ -7,7 +7,7 @@ using BlazorFluentUI;
 
 using ElectronNET.API;
 using ElectronNET.API.Entities;
-
+using iRacingSDK;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -36,7 +36,8 @@ namespace iRacingTimings
             services.AddBlazorFluentUI();
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            
+
+            services.AddSingleton<iRacingService>();
             services.AddSingleton<TimingsService>();
         }
 

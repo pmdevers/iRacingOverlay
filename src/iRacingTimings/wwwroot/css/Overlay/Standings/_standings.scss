@@ -1,0 +1,510 @@
+﻿/// <reference path="../_variables.scss" />
+.overlay {
+    > .standings {
+        background: transparent;
+        color: $text-color;
+        font-family: $medium-font;
+        font-size: $normal-font-size;
+        position: relative;
+        height: 80vh;
+        white-space: nowrap;
+        top: 25px;
+        transition: opacity 0.3s;
+
+        > .driver-wrapper {
+            position: absolute;
+            top: 1px;
+            left: 20px;
+            transition: transform 0.2s linear;
+
+            > .driver {
+                height: 27px;
+                background: $driver-background-color;
+                border-left: 2px solid $panel-surface-background-color;
+                border-right: 2px solid $panel-surface-background-color;
+                border-top: 1px solid $panel-surface-background-color;
+                border-bottom: 1px solid $panel-surface-background-color;
+                background-clip: padding-box;
+                overflow: hidden;
+                transform: scale(0.7) translateX(30px);
+                transition: transform 0.2s ease-out 0.2s, opacity 0.2s ease-in-out 0.1s;
+                opacity: 0;
+                text-shadow: $text-shadow;
+
+                > .position-wrapper {
+                    transition: transform 0.2s ease-in-out 0.1s, opacity 0.2s ease-in-out 0.1s;
+                    opacity: 0;
+
+                    > .position {
+                        transition: transform 0.2s ease-in-out;
+                    }
+                }
+
+                > .color-stripe {
+                    transition: transform 0.2s ease-in-out 0.1s, opacity 0.2s ease-in-out 0.1s;
+                    opacity: 0;
+                }
+
+                > .container {
+                    display: inline-block;
+                    position: relative;
+                    overflow: hidden;
+                    height: 27px;
+
+                    > .name-wrapper {
+                        display: inline-block;
+                        overflow: hidden;
+                        width: 185px;
+                        height: 27px;
+                        transform: translateX(-300px);
+                        transition: width 0.2s ease-in-out, transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+                        padding-left: 8px;
+                        opacity: 0;
+
+                        > .name {
+                            display: inline-block;
+                            overflow: hidden;
+                            width: 500px;
+                            line-height: 29px;
+                            vertical-align: middle;
+                            letter-spacing: 1px;
+                            transform-origin: left;
+                        }
+                    }
+
+                    > .data-wrapper {
+                        display: inline-block;
+                        overflow: hidden;
+                        width: 0;
+                        height: 27px;
+                        line-height: 29px;
+                        transform: translateX(-300px);
+                        transition: width 0.2s ease-in-out, transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+                        opacity: 0;
+
+                        > .data {
+                            overflow: hidden;
+                            vertical-align: middle;
+                            text-align: right;
+                            padding-right: 10px;
+                            float: right;
+                            white-space: pre;
+                        }
+
+                        > .data2 {
+                            float: right;
+                        }
+
+                        > .flag {
+                            width: 0;
+                            margin: -2px;
+                            height: 31px;
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            transition: width 0.2s ease-out;
+                        }
+
+                        > .joker {
+                            width: 0;
+                            margin: 2px;
+                            height: 23px;
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-image: url(images/joker.png);
+                            filter: brightness(1.5);
+                            transition: width 0.2s ease-out;
+                        }
+
+                        &.joker-dimmed > .joker {
+                            filter: contrast(0.1);
+                        }
+
+                        &.show-interval {
+                            &.allow-data {
+                                width: 5em;
+                            }
+                        }
+
+
+                        &.show-gap {
+                            &.allow-data {
+                                width: 5em;
+                            }
+                        }
+
+                        &.show-gain {
+                            > .data {
+                                text-align: left;
+                                width: 2.5em;
+                            }
+                        }
+
+                        &.show-top-speed {
+                            > data {
+                                float: right;
+                                width: 2.5em;
+                                padding-right: 7px;
+                            }
+
+                            > .data2 {
+                                float: right;
+                                width: 3em;
+                                font-family: $regular-font;
+                                font-size: $small-font-size;
+                            }
+
+                            &.allow-data {
+                                width: 6em;
+                            }
+                        }
+
+                        &.show-pit-count {
+
+                            > .data {
+                                float: right;
+                                width: 1.5em;
+                                padding-right: 7px;
+                            }
+
+                            > .data2 {
+                                float: right;
+                                width: 4em;
+                                font-family: var(--regular-font);
+                                font-size: var(--small-font-size);
+                            }
+
+                            &.allow-data {
+                                width: 5.5em;
+                            }
+                        }
+
+                        &.show-last-lap-time {
+                            &.allow-data {
+                                width: 5.5em;
+                            }
+                        }
+
+                        &.show-best-lap-time {
+                            &.allow-data {
+                                width: 5.5em;
+                            }
+                        }
+
+                        &.show-car-logo {
+
+                            > .car-logo {
+                                width: 24px;
+                                transition: width 0.2s ease-in 0.2s;
+                            }
+
+                            &.allow-data {
+                                width: 40px;
+                            }
+                        }
+
+                        &.show-flag {
+                            > .flag {
+                                width: 40px;
+                                transition: width 0.2s ease-in 0.2s;
+                            }
+
+                            &.allow-data {
+                                width: 40px;
+                            }
+                        }
+
+                        &.show-joker {
+                            > .joker {
+                                width: 40px;
+                                transition: width 0.2s ease-in 0.2s;
+                            }
+
+                            &.allow-data {
+                                width: 40px;
+                            }
+                        }
+
+                        &.show-license {
+
+                            > .data {
+                                width: 3.7em;
+                                font-size: 15px;
+                                text-shadow: none;
+                                line-height: 21px;
+                                border-radius: 2px;
+                                margin-top: 3px;
+                                margin-right: 7px;
+                                padding-right: 7px;
+                            }
+
+                            &.allow-data {
+                                width: 3.8em;
+                            }
+                        }
+
+                        &.show-license-detail {
+                            > .data {
+                                width: 6em;
+                                font-size: 15px;
+                                text-shadow: none;
+                                line-height: 21px;
+                                border-radius: 2px;
+                                margin-top: 3px;
+                                margin-right: 7px;
+                                padding-right: 7px;
+                            }
+
+                            &.allow-data {
+                                width: 5.5em;
+                            }
+                        }
+
+                        &.show-license, &.show-license-detail {
+                            > .data {
+                                .wp {
+                                    background: black;
+                                    color: white;
+                                }
+
+                                .a {
+                                    background: rgb(1, 83, 219);
+                                    color: white;
+                                }
+
+                                .b {
+                                    background: rgb(0, 199, 2);
+                                    color: black;
+                                }
+
+                                .c {
+                                    background: rgb(254, 236, 4);
+                                    color: black;
+                                }
+
+                                .d {
+                                    background: rgb(252, 138, 39);
+                                    color: black;
+                                }
+
+                                .r {
+                                    background: rgb(252, 7, 6);
+                                    color: white;
+                                }
+                            }
+                        }
+
+                        &.show-car-number {
+                            > .data {
+                                line-height: 25px;
+                                height: 27px;
+                                font-family: var(--car-number-font);
+                                font-size: var(--car-number-font-size);
+                                color: var(--driver-number-color);
+                                padding-left: 4px;
+                                padding-right: 4px;
+                                margin-right: 6px;
+                                min-width: 33px;
+                                text-align: center;
+                                text-shadow: none;
+
+                                &.outline-light {
+                                    -webkit-text-stroke: 0.5px $driver-number-outline-light;
+                                }
+
+                                &.outline-dark {
+                                    -webkit-text-stroke: 0.5px $driver-number-outline-dark;
+                                }
+                            }
+
+                            &.allow-data {
+                                width: 4em;
+                            }
+                        }
+
+                        &.show-last-pit-lap {
+
+                            &.allow-data {
+                                width: 4em;
+                            }
+                        }
+
+                        &.show-last-pit-time {
+                            &.allow-data {
+                                width: 5.5em;
+                            }
+                        }
+
+                        &.show-last-pit-lane-time {
+                            &.allow-data {
+                                width: 5.5em;
+                            }
+                        }
+
+                        &.show-off-track-count {
+                            &.allow-data {
+                                width: 3em;
+                            }
+                        }
+
+                        &.show-irating-gain {
+                            &.allow-data {
+                                width: 4em;
+                            }
+                        }
+
+                        &.personal-best-time {
+                            > .data {
+                                color: $driver-personal-best-time-color;
+                            }
+                        }
+
+                        &.overall-best-time.personal-best-time {
+                            > .data {
+                                color: $driver-overall-best-time-color;
+                            }
+                        }
+
+                        &.close {
+                            > .data {
+                                color: $driver-close-color;
+                            }
+                        }
+
+                        &.very-close {
+                            > .data {
+                                color: $driver-very-close-color;
+                            }
+                        }
+
+                        &.gain {
+                            > .data {
+                                color: $driver-gain-color;
+                            }
+                        }
+
+                        &.loss {
+                            > .data {
+                                color: $driver-loss-color;
+                            }
+                        }
+
+                        &.same {
+                            > .data {
+                                color: $driver-same-color;
+                            }
+                        }
+                    }
+
+                    > .last-lap-time-wrapper {
+                        display: inline-block;
+                        overflow: hidden;
+                        width: 0;
+                        height: 27px;
+                        text-align: right;
+                        padding: 0;
+                        transition: all 0.5s;
+
+                        > .last-lap-time {
+                            overflow: hidden;
+                            width: 5em;
+                            float: right;
+                            line-height: 27px;
+                            padding-left: 10px;
+                            padding-right: 10px;
+                        }
+                    }
+
+                    > .pit-wrapper {
+                        display: inline-block;
+                        overflow: hidden;
+                        width: 0;
+                        transition: all 0.5s;
+
+                        > .pit {
+                            overflow: hidden;
+                            width: 4em;
+                            float: right;
+                            text-align: left;
+                            line-height: 27px;
+                            padding-left: 10px;
+                            padding-right: 10px;
+                            transition: color 0s ease-in-out 0.3s;
+                        }
+                    }
+
+                    > .flag-wrapper-7x5 {
+                        display: inline-block;
+                        overflow: hidden;
+                        width: 0;
+                        transition: all 0.5s;
+
+                        > .flag-7x5 {
+                            overflow: hidden;
+                            width: 33px;
+                            float: right;
+                            height: 27px;
+                            background: url(checkered7x5.png) !important;
+                            background-size: 100% 100% !important;
+                            background-repeat: no-repeat;
+                        }
+                    }
+                }
+            }
+
+            &.show-driver {
+                > .driver {
+                    transform: scale(1);
+                    transition: top 0.2s linear, transform 0.2s ease-in, opacity 0.2s ease-in;
+                    opacity: 1;
+
+                    > .position-wrapper {
+                        transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+                        opacity: 1;
+                    }
+
+                    > .color-stripe {
+                        transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+                        opacity: 1;
+                    }
+
+                    > .container {
+                        > .name-wrapper {
+                            transform: translateX(0);
+                            transition: width 0.2s ease-in-out, transform 0.4s ease-in-out 0.1s, opacity 0.4s ease-in-out 0.1s;
+                            opacity: 1;
+                        }
+
+                        > .data-wrapper {
+                            transform: translateX(0);
+                            transition: width 0.2s ease-in-out, transform 0.3s ease-in-out 0.1s, opacity 0.3s ease-in-out 0.1s;
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+
+            &.show-pit > .driver > .container > .pit-wrapper {
+                width: 5em;
+                margin-left: 2px;
+                font-size: $very-small-font-size;
+            }
+
+            &.show-out > .driver > .container > .pit-wrapper {
+                width: 3em;
+                margin-left: 2px;
+                font-size: $very-small-font-size;
+            }
+
+            &.show-flag-7x5 > .driver > .container > .flag-wrapper-7x5 {
+                width: 2em;
+                margin-left: 2px;
+            }
+
+            &.position-displays-selected-driver .driver > .position-wrapper {
+                background-color: $driver-selected-color !important;
+            }
+        }
+    }
+}

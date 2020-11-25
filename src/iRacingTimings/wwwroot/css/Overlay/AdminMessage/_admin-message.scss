@@ -1,0 +1,19 @@
+﻿/// <reference path="../_variables.scss" />
+
+.overlay {
+    > .admin-message {
+        position: absolute;
+        display: inline-block;
+        width: 100%;
+        top: 200px;
+        text-align: center;
+        vertical-align: middle;
+        font-family: $medium-font;
+        font-size: 50px;
+        color: red;
+
+        &.hide {
+            display:none;
+        }
+    }
+}

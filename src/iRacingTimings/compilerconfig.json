@@ -2,5 +2,13 @@
   {
     "outputFile": "wwwroot/css/site.css",
     "inputFile": "wwwroot/css/site.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/Overlay/_overlay.css",
+    "inputFile": "wwwroot/css/Overlay/_overlay.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/Overlay/Standings/_standings.css",
+    "inputFile": "wwwroot/css/Overlay/Standings/_standings.scss"
   }
 ]

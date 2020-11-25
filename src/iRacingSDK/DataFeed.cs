@@ -97,7 +97,7 @@ namespace iRacingSDK
 				{
 					var sessionInfoData = new byte[header.sessionInfoLen];
 					accessor.ReadArray<byte>(header.sessionInfoOffset, sessionInfoData, 0, header.sessionInfoLen);
-					var sessionInfoString = System.Text.Encoding.Default.GetString(sessionInfoData);
+					var sessionInfoString = System.Text.Encoding.UTF7.GetString(sessionInfoData);
 
 					var length = sessionInfoString.IndexOf('\0');
 					if (length == -1)

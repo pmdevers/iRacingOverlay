@@ -1,16 +1,12 @@
-@page "/"
-@using iRacingTimings.Data
-@using iRacingSDK
+﻿@page "/"
 
 @inject TimingsService TimingsService;
-
-<h1>Hello, world!</h1>
 
 <ul>
     @foreach (var driver in TimingsService.Timings)
     {
         <li>@driver.DriverName</li>
-        <li>@driver.LastLap.Seconds().ToString(@"mm\:ss\.fff")</li>                              
+        <li>@driver.LastLap.Seconds().ToString(@"mm\:ss\.fff")</li>
         <li>@driver.DistDegree</li>
     }
 </ul>
@@ -22,12 +18,13 @@
 
     protected override void OnInitialized()
     {
-        base.OnInitialized();
         _events.NewData += Update;
         _events.NewSessionData += UpdateSession;
         _events.Connected += Connected;
 
         _events.StartListening();
+
+        base.OnInitialized();
     }
 
     private void Connected()
@@ -39,7 +36,7 @@
     {
         if (isConnected)
         {
-            TimingsService.SetDataFromSession(data, true);
+            TimingsService.UpdateSession(data);
             StateHasChanged();
         }
     }

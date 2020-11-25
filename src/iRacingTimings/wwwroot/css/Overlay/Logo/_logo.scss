@@ -1,0 +1,16 @@
+﻿/// <reference path="../_variables.scss" />
+
+.overlay {
+    > .logo {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        overflow: hidden;
+        transition: opacity 0.3s;
+
+
+        &.hide {
+            opacity: 0;
+        }
+    }
+}

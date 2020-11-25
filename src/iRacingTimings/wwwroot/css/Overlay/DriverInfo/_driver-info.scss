@@ -1,0 +1,298 @@
+﻿/// <reference path="../_variables.scss" />
+.driver-details {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    white-space: nowrap;
+    position: absolute;
+    margin: 0 auto;
+    left: 20px;
+    bottom: 40px;
+    transform: perspective(1000px) translateZ(200px);
+    transform-origin: left bottom;
+    transition: bottom 0.2s ease-in-out, transform 0.2s ease-in-out, opacity 0.3s ease-in-out 0.8s;
+    text-shadow: $text-shadow;
+
+    > .data-wrapper {
+        position: relative;
+
+        > .upper-data-wrapper {
+            background: $panel-background-color;
+            border-left: 2px solid $panel-surface-background-color;
+            border-right: 2px solid $panel-surface-background-color;
+            border-top: 2px solid $panel-surface-background-color;
+            border-bottom: 2px solid $panel-surface-background-color;
+            background-clip: padding-box;
+            color: $text-color;
+            font-family: $regular-font;
+            font-size: $normal-font-size;
+            height: 27px;
+            transition: transform 0.3s ease-out, padding 0.3s ease 0.2s;
+            overflow: hidden;
+
+            > .position-wrapper {
+                transition: width 0.2s ease-in-out;
+
+                > .position {
+                    transition: transform 0.2s ease-out 0.3s;
+                }
+            }
+
+            > .color-stripe {
+                transition: transform 0.2s ease-in-out;
+            }
+
+            > .container {
+                overflow: hidden;
+                height: 27px;
+                margin-left: 0px;
+                letter-spacing: 1px;
+
+                > .name-wrapper {
+                    float: left;
+
+                    > .first-name {
+                        float: left;
+                        text-align: left;
+                        padding-left: 10px;
+                        vertical-align: middle;
+                        line-height: 29px;
+                        height: 27px;
+                        font-size: $smaller-font-size;
+                        color: $driver-first-name-color;
+                    }
+
+                    > .last-name {
+                        float: left;
+                        text-align: left;
+                        padding-left: 6px;
+                        padding-right: 6px;
+                        vertical-align: middle;
+                        line-height: 29px;
+                        height: 27px;
+                        font-family: $medium-font;
+                    }
+
+                    > .suffix {
+                        float: left;
+                        text-align: left;
+                        padding-right: 6px;
+                        vertical-align: middle;
+                        line-height: 29px;
+                        height: 27px;
+                        font-size: $smaller-font-size;
+                        color: $driver-first-name-color;
+                    }
+                }
+
+                > .number {
+                    float: right;
+                    text-align: left;
+                    vertical-align: middle;
+                    line-height: 25px;
+                    height: 27px;
+                    font-family: $car-number-font;
+                    font-size: $car-number-font-size;
+                    padding-left: 4px;
+                    padding-right: 4px;
+                    margin-left: 6px;
+                    transition: transform 0.2s ease-out 0.3s;
+                    color: $driver-number-color;
+                    min-width: 33px;
+                    text-align: center;
+                    text-shadow: none;
+
+                    &.outline-light {
+                        -webkit-text-stroke: 0.5px $driver-number-outline-light;
+                    }
+
+                    &.outline-dark {
+                        -webkit-text-stroke: 0.5px $driver-number-outline-dark;
+                    }
+                }
+
+                > .flag {
+                    float: right;
+                    vertical-align: middle;
+                    line-height: 29px;
+                    height: 28px;
+                    width: 28px;
+                    background-size: cover;
+                    background-position: center;
+                    margin: 0px 6px 0px 6px;
+                    transition: transform 0.2s ease-out 0.4s;
+                }
+
+                > .gain {
+                    float: right;
+                    overflow: hidden;
+                    text-align: left;
+                    vertical-align: middle;
+                    line-height: 29px;
+                    letter-spacing: -1px;
+                    font-family: $medium-font;
+                    padding: 0;
+                    width: 0;
+                    transition: all 0.2s ease-out 0.3s;
+                }
+            }
+        }
+
+        > .middle-data-wrapper {
+            position: relative;
+            color: var(--text-color);
+            font-family: var(--regular-font);
+            font-size: var(--small-font-size);
+            vertical-align: middle;
+            height: 0;
+            line-height: 23px;
+            overflow: hidden;
+            background: var(--panel-surface-background-color-light);
+            transition: all 0.2s ease-out 0.3s, padding 0.3s ease 0.2s;
+
+            > .text {
+                display: inline-block;
+                overflow: hidden;
+                padding-left: 64px;
+                transition: all 0.2s ease-out 0.2s;
+            }
+        }
+
+        > .lower-data-wrapper {
+            position: relative;
+            color: var(--text-color);
+            font-family: var(--regular-font);
+            font-size: var(--small-font-size);
+            vertical-align: middle;
+            height: 0;
+            line-height: 23px;
+            overflow: hidden;
+            background: var(--panel-surface-background-color-light);
+            transition: all 0.2s ease-out 0.3s, padding 0.3s ease 0.2s;
+
+            > .text1 {
+                display: inline-block;
+                overflow: hidden;
+                padding-left: 20px;
+                font-size: var(--extra-small-font-size);
+                font-family: var(--medium-font);
+                letter-spacing: 1px;
+                transition: all 0.2s ease-out 0.2s;
+            }
+
+            > .data1 {
+                display: inline-block;
+                overflow: hidden;
+                padding-left: 10px;
+                font-size: var(--very-small-font-size);
+                font-family: var(--medium-font);
+                transition: all 0.2s ease-out 0.1s;
+            }
+
+            > .text2 {
+                display: inline-block;
+                overflow: hidden;
+                padding-left: 20px;
+                font-family: var(--medium-font);
+                font-size: var(--extra-small-font-size);
+                letter-spacing: 1px;
+                transition: all 0.2s ease-out;
+            }
+
+            > .data2 {
+                display: inline-block;
+                overflow: hidden;
+                padding-left: 10px;
+                padding-right: 20px;
+                font-size: var(--very-small-font-size);
+                font-family: var(--medium-font);
+                transition: all 0.2s ease-out 0.1s;
+            }
+        }
+
+        > .photo-wrapper {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 120px;
+            height: 120px;
+            overflow: hidden;
+
+            > .photo {
+                display: block;
+                float: right;
+                width: 120px;
+                height: 120px;
+                border-radius: 10px 10px 0 0;
+                background: transparent;
+                object-fit: cover;
+                clip-path: inset(0px);
+                margin: 0px auto;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+        }
+    }
+
+    &.hide {
+        > .data-wrapper {
+            > .upper-data-wrapper {
+                transform: translateX(-800px);
+                transition: transform 0.3s ease-in 0.2s;
+            }
+        }
+    }
+
+    &.photo {
+        > .data-wrapper {
+
+            > .upper-data-wrapper {
+                padding-right: 120px;
+                transition: transform 0.3s ease-out, padding 0.3s ease;
+            }
+
+            > .middle-data-wrapper {
+                padding-right: 120px;
+                transition: all 0.2s ease-out 0.3s, padding 0.3s ease;
+            }
+
+            > .lower-data-wrapper {
+                padding-right: 120px;
+                transition: all 0.2s ease-out 0.3s, padding 0.3s ease;
+            }
+
+            > .photo-wrapper > .photo {
+                opacity: 1;
+                transition: opacity 0.3s ease 0.2s;
+            }
+        }
+    }
+
+    &.lap-times {
+        > .data-wrapper {
+            > .lower-data-wrapper {
+                height: 23px;
+            }
+        }
+
+        &:not(.remove-gain) > .data-wrapper > .upper-data-wrapper > .container > .gain {
+            float: right;
+            padding-right: 10px;
+            padding-left: 6px;
+            width: auto;
+        }
+
+        &.gain > .data-wrapper > .upper-data-wrapper > .container > .gain {
+            color: $driver-gain-color;
+        }
+
+        &.loss > .data-wrapper > .upper-data-wrapper > .container > .gain {
+            color: $driver-loss-color;
+        }
+
+        &.same > .data-wrapper > .upper-data-wrapper > .container > .gain {
+            color: $driver-same-color;
+        }
+    }
+}
+

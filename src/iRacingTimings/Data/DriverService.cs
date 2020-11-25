@@ -6,11 +6,15 @@ using iRacingSDK;
 
 namespace iRacingTimings.Data
 {
-    public class DriverService : IiRacingService
+    public class DriverService : ISubService
     {
         public void Update(DataSample data)
         {
             
+        }
+
+        public void UpdateSession(DataSample sample)
+        {
         }
     }
 }

@@ -7,6 +7,9 @@ namespace iRacingTimings.Shared.Components
 {
     public class BaseDomComponent : BaseComponent
     {
+        [Parameter]
+        public string Id { get; set; } = IdGeneratorHelper.Generate("overlay_id_");
+
         /// <summary>
         /// Gets or sets a collection of additional attributes that will be applied to the created element.
         /// </summary>

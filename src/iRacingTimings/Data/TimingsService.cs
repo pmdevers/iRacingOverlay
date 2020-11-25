@@ -7,11 +7,11 @@ using iRacingSDK;
 
 namespace iRacingTimings.Data
 {
-    public class TimingsService  
+    public class TimingsService : ISubService
     {
         private int _currentStateNumber;
-        private SessionData._DriverInfo._Drivers[] _drivers;
-        private SessionData._SplitTimeInfo._Sectors[] _sectors;
+        private SessionData._DriverInfo._Drivers[] _drivers = new SessionData._DriverInfo._Drivers[0];
+        private SessionData._SplitTimeInfo._Sectors[] _sectors = new SessionData._SplitTimeInfo._Sectors[0];
         ConcurrentDictionary<long, List<double>> _laptimes = new ConcurrentDictionary<long, List<double>>();
 
         ConcurrentDictionary<long, List<double>> _stindRecord = new ConcurrentDictionary<long, List<double>>();
@@ -21,21 +21,9 @@ namespace iRacingTimings.Data
 
         public List<TimingModel> Timings { get; set; } = new List<TimingModel>();
 
-        public void SetDataFromSession(DataSample data, bool force)
-        {
-            if (_drivers == null || force)
-            {
-                _drivers = data.SessionData.DriverInfo.Drivers;
-            }
-
-            if (_sectors == null || force)
-            {
-                _sectors = data.SessionData.SplitTimeInfo.Sectors;
-            }
-        }
         public void Update(DataSample data)
         {
-            SetDataFromSession(data, false);
+            UpdateSession(data);
             CheckSessionState(data);
             
             var timings = new List<TimingModel>();
@@ -81,7 +69,19 @@ namespace iRacingTimings.Data
             AfterUpdate?.Invoke();
         }
 
-       
+        public void UpdateSession(DataSample data)
+        {
+            if (_drivers == null || _drivers != data.SessionData.DriverInfo.Drivers)
+            {
+                _drivers = data.SessionData.DriverInfo.Drivers;
+            }
+
+            if (_sectors == null || _sectors != data.SessionData.SplitTimeInfo.Sectors)
+            {
+                _sectors = data.SessionData.SplitTimeInfo.Sectors;
+            }
+        }
+
         private void ProcessPitlane(DataSample data, in long driverCarIdx)
         {
             
@@ -187,5 +187,7 @@ namespace iRacingTimings.Data
         public float PittedLap { get; set; }
         public int CarLap { get; set; }
         public float StintLength { get; set; }
+        public bool Selected { get; set; }
+        public bool IsFinished { get; set; }
     }
 }

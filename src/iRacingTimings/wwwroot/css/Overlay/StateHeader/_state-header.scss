@@ -1,0 +1,142 @@
+﻿/// <reference path="../_variables.scss" />
+
+.overlay {
+    > .state-header {
+        position: relative;
+        left: 20px;
+        top: 20px;
+        overflow: hidden;
+        transition: opacity 0.3s;
+
+        > .container {
+            display: inline-block;
+            background: $panel-background-color;
+            color: $text-color;
+            font-family: $medium-font;
+            font-size: $normal-font-size;
+            letter-spacing: +1px;
+            padding: 0.2em 0.4em 0.2em 0.4em;
+            overflow: hidden;
+            transition: transform 0.3s ease-out, opacity 0.2s ease-in-out 0.1s;
+            text-shadow: $text-shadow;
+
+            > .flag-wrapper-9x5 {
+                overflow: hidden;
+                float: left;
+                width: 0;
+                transition: all 0.5s;
+
+                > .flag-9x5 {
+                    overflow: hidden;
+                    width: 28px;
+                    float: right;
+                    height: 16px;
+                    margin-top: 3px;
+                    margin-bottom: 3px;
+                }
+            }
+
+            > .type {
+                float: left;
+                white-space: pre;
+                transition: transform 0.3s 0.15s;
+            }
+
+            > .laps {
+                float: left;
+                white-space: pre;
+                transition: transform 0.3s 0.1s;
+            }
+
+            > .time {
+                float: left;
+                white-space: pre;
+                transition: transform 0.3s 0.05s;
+            }
+        }
+
+        &.show-checkered-flag {
+            > .container {
+                > .flag-wrapper-9x5 {
+                    > .flag-9x5 {
+                        background: url('../img/flags/chequered.svg') !important;
+                        background-size: 100% 100% !important;
+                        background-repeat: no-repeat;
+                    }
+                }
+
+                #flagWrapper1, #flagWrapper2 {
+                    width: 28px;
+                    margin-left: 5px;
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        &.show-white-flag {
+            > .container {
+                > .flag-wrapper-9x5 {
+                    > .flag-9x5 {
+                        background: url('../img/flags/white.svg') !important;
+                        background-size: 100% 100% !important;
+                        background-repeat: no-repeat;
+                    }
+                }
+
+                #flagWrapper1, #flagWrapper2 {
+                    width: 28px;
+                    margin-left: 5px;
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        &.show-full-course-yellow-flag,
+        &.show-yellow-flag {
+            > .container {
+                > .flag-wrapper-9x5 {
+                    > .flag-9x5 {
+                        background: url('../img/flags/yellow.svg') !important;
+                        background-size: 100% 100% !important;
+                        background-repeat: no-repeat;
+                    }
+                }
+
+                #flagWrapper1, #flagWrapper2 {
+                    width: 28px;
+                    margin-left: 5px;
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        &.hide {
+            opacity: 0;
+
+            > .container {
+                transform: translateX(-600px);
+                transition: transform 0.3s ease-in 0.2s, opacity 0.2s ease-in-out 0.4s;
+
+                > .flag-wrapper-9x5 {
+                    transform: translateX(-150px);
+                    transition: transform 0.3s;
+                }
+
+                .type {
+                    transform: translateX(-150px);
+                    transition: transform 0.3s 0.05s;
+                }
+
+                .laps {
+                    transform: translateX(-100px);
+                    transition: transform 0.3s 0.1s;
+                }
+
+                .time {
+                    transform: translateX(-50px);
+                    transition: transform 0.3s 0.15s;
+                }
+            }
+        }
+    }
+}
