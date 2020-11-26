@@ -9,8 +9,8 @@ namespace iRacingSDK
 	public class iRacingEvents : IDisposable
 	{
 		private readonly iRacingConnection _instance = new iRacingConnection();
-		private readonly CrossThreadEvents<DataSample> _newData = new CrossThreadEvents<DataSample>();
-		private readonly CrossThreadEvents<DataSample> _newSessionData = new CrossThreadEvents<DataSample>();
+		private readonly CrossThreadEvents<Telemetry> _newData = new CrossThreadEvents<Telemetry>();
+		private readonly CrossThreadEvents<SessionData> _newSessionData = new CrossThreadEvents<SessionData>();
 		private readonly CrossThreadEvents _connected = new CrossThreadEvents();
 		private readonly CrossThreadEvents _disconnected = new CrossThreadEvents();
 		private readonly TimeSpan _period;
@@ -50,13 +50,13 @@ namespace iRacingSDK
 			remove => _disconnected.Event -= value;
 		}
 
-		public event Action<DataSample> NewData
+		public event Action<Telemetry> NewData
 		{
 			add => _newData.Event += value;
 			remove => _newData.Event -= value;
 		}
 
-		public event Action<DataSample> NewSessionData
+		public event Action<SessionData> NewSessionData
 		{
 			add => _newSessionData.Event += value;
 			remove => _newSessionData.Event -= value;
@@ -121,12 +121,12 @@ namespace iRacingSDK
 					lastTimeStamp = DateTime.Now;
 
 					if (d.IsConnected)
-						_newData.Invoke(d);
+						_newData.Invoke(d.Telemetry);
 
 					if (d.IsConnected && d.SessionData.InfoUpdate != lastSessionInfoUpdate)
 					{
 						lastSessionInfoUpdate = d.SessionData.InfoUpdate;
-						_newSessionData.Invoke(d);
+						_newSessionData.Invoke(d.SessionData);
 					}
 				}
 			}

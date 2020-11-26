@@ -9,7 +9,7 @@ namespace iRacingSDK
 		public bool LeaderHasFinished;
 		public bool[] HasRetired;
 
-		public bool HasData(int carIdx)
+		public bool HasData(long carIdx)
 		{
 			return CarIdxTrackSurface[carIdx] != TrackLocation.NotInWorld;
 		}

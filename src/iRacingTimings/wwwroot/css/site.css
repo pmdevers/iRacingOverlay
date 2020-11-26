@@ -431,22 +431,22 @@
             padding-right: 7px; }
           .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license-detail.allow-data {
             width: 5.5em; }
-          .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license > .data .wp, .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license-detail > .data .wp {
+          .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license > .data.wp, .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license-detail > .data.wp {
             background: black;
             color: white; }
-          .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license > .data .a, .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license-detail > .data .a {
+          .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license > .data.a, .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license-detail > .data.a {
             background: #0153db;
             color: white; }
-          .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license > .data .b, .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license-detail > .data .b {
+          .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license > .data.b, .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license-detail > .data.b {
             background: #00c702;
             color: black; }
-          .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license > .data .c, .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license-detail > .data .c {
+          .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license > .data.c, .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license-detail > .data.c {
             background: #feec04;
             color: black; }
-          .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license > .data .d, .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license-detail > .data .d {
+          .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license > .data.d, .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license-detail > .data.d {
             background: #fc8a27;
             color: black; }
-          .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license > .data .r, .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license-detail > .data .r {
+          .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license > .data.r, .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-license-detail > .data.r {
             background: #fc0706;
             color: white; }
           .overlay > .standings > .driver-wrapper > .driver > .container > .data-wrapper.show-car-number > .data {
@@ -559,6 +559,8 @@
       width: 3em;
       margin-left: 2px;
       font-size: 14px; }
+    .overlay > .standings > .driver-wrapper.show-lap-time > .driver > .container > .last-lap-time-wrapper {
+      width: 5.5em; }
     .overlay > .standings > .driver-wrapper.show-flag-7x5 > .driver > .container > .flag-wrapper-7x5 {
       width: 2em;
       margin-left: 2px; }
@@ -692,21 +694,21 @@
         transition: all 0.2s ease-out 0.2s; }
     .driver-details > .data-wrapper > .lower-data-wrapper {
       position: relative;
-      color: var(--text-color);
-      font-family: var(--regular-font);
-      font-size: var(--small-font-size);
+      color: white;
+      font-family: BentonSans-Regular;
+      font-size: 16px;
       vertical-align: middle;
       height: 0;
       line-height: 23px;
       overflow: hidden;
-      background: var(--panel-surface-background-color-light);
+      background: rgba(0, 0, 0, 0.3);
       transition: all 0.2s ease-out 0.3s, padding 0.3s ease 0.2s; }
       .driver-details > .data-wrapper > .lower-data-wrapper > .text1 {
         display: inline-block;
         overflow: hidden;
         padding-left: 20px;
-        font-size: var(--extra-small-font-size);
-        font-family: var(--medium-font);
+        font-size: 12px;
+        font-family: BentonSans-Medium;
         letter-spacing: 1px;
         transition: all 0.2s ease-out 0.2s; }
       .driver-details > .data-wrapper > .lower-data-wrapper > .data1 {
@@ -720,8 +722,8 @@
         display: inline-block;
         overflow: hidden;
         padding-left: 20px;
-        font-family: var(--medium-font);
-        font-size: var(--extra-small-font-size);
+        font-family: BentonSans-Medium;
+        font-size: 12px;
         letter-spacing: 1px;
         transition: all 0.2s ease-out; }
       .driver-details > .data-wrapper > .lower-data-wrapper > .data2 {
@@ -729,8 +731,8 @@
         overflow: hidden;
         padding-left: 10px;
         padding-right: 20px;
-        font-size: var(--very-small-font-size);
-        font-family: var(--medium-font);
+        font-size: 14px;
+        font-family: BentonSans-Medium;
         transition: all 0.2s ease-out 0.1s; }
     .driver-details > .data-wrapper > .photo-wrapper {
       position: absolute;

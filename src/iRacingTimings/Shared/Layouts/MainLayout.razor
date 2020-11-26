@@ -27,7 +27,7 @@
     private BrowserWindow _window;
     private bool IsMaximizable;
     
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
         _window = Electron.WindowManager.BrowserWindows.FirstOrDefault();
     }

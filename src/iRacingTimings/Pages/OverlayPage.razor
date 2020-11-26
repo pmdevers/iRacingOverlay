@@ -1,6 +1,5 @@
 ﻿@page "/overlay"
 
-@inject iRacingService IRacingService
 @layout Overlay
 
 <StateHeader Visible="true"></StateHeader>
@@ -9,7 +8,7 @@
 
 <Logo Visible="true"></Logo>
 
-<DriverInfo Visible="true" Photo="false"></DriverInfo>
+<DriverInfo Visible="true" Laptimes="true" Photo="false"></DriverInfo>
 
 <Twitch></Twitch>
 
@@ -18,7 +17,6 @@
 {
     protected override void OnInitialized()
     {
-        IRacingService.StateChanged += StateHasChanged;
         base.OnInitialized();
     }
 }

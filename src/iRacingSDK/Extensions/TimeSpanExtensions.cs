@@ -32,6 +32,11 @@ namespace iRacingSDK
 
         public static string ToTimeString(this TimeSpan ts)
         {
+            if (ts == null)
+            {
+                return string.Empty;
+            }
+
             var sb = new StringBuilder();
             var hours = (int) ts.TotalHours;
 

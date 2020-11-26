@@ -37,8 +37,6 @@ namespace iRacingTimings
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
-            services.AddSingleton<iRacingService>();
-            services.AddSingleton<TimingsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,6 +62,11 @@ namespace iRacingTimings
             {
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
+            });
+
+            Task.Run(() =>
+            {
+                Simulator.Instance.Start();
             });
 
             Task.Run(async () => await Electron.WindowManager.CreateBrowserViewAsync());

@@ -34,16 +34,10 @@ namespace iRacingSDK
 			eventInstance.StopListening();
 		}
 
-		public static event Action<DataSample> NewData
+		public static event Action<Telemetry> NewData
 		{
-			add
-			{
-				eventInstance.NewData += value;
-			}
-			remove
-			{
-				eventInstance.NewData -= value;
-			}
-		}
+			add => eventInstance.NewData += value;
+            remove => eventInstance.NewData -= value;
+        }
 	}
 }

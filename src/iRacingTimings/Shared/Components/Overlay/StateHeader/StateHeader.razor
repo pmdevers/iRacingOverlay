@@ -4,31 +4,31 @@
 <div id="stateHeader" class="@ClassMapper.AsString()">
     <div id="container" class="container">
         <Flag Id="flagWrapper1" Scale="FlagScale.flag9x5"></Flag>
-        <div id="type" class="type">@SessionType - </div>
-        @if (IsRace)
+        <div id="type" class="type">@Simulator.SessionInfo.SessionType - </div>
+        @if (Simulator.SessionInfo.IsRace)
         {
-            @if (IsLimitedSessionLaps)
+            @if (Simulator.SessionInfo.IsLimitedSessionLaps)
             {
-                <div id="laps" class="laps">@Lap / @Laps - </div>
+                <div id="laps" class="laps">@Simulator.Leader.Live.Lap / @Simulator.SessionInfo.RaceLaps - </div>
             }
-            else if (Lap > 0)
+            else if (Simulator.Leader.Live.Lap > 0)
             {
-                <div id="laps" class="laps">Lap @Lap - </div>
+                <div id="laps" class="laps">Lap @Simulator.Leader.Live.Lap - </div>
             }
 
-            @if (IsLimitedTime)
+            @if (Simulator.SessionInfo.IsLimitedTime)
             {
-                <div id="time" class="time">@TimeRemain / @Time </div>
+                <div id="time" class="time">@Simulator.SessionInfo.TimeRemaining / @Simulator.SessionInfo.RaceTime </div>
             }
             else
             {
-                <div id="time" class="time">@TimeRemain </div>
+                <div id="time" class="time">@Simulator.SessionInfo.TimeRemaining </div>
             }
 
         }
         else
         {
-            <div id="time" class="time"> @TimeRemain </div>
+            <div id="time" class="time"> @Simulator.SessionInfo.TimeRemaining </div>
         }
         <Flag Id="flagWrapper2" Scale="FlagScale.flag9x5"></Flag>
     </div>

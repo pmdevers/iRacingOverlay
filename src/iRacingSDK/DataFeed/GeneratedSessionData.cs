@@ -10,7 +10,7 @@ namespace iRacingSDK
 		public partial class _WeekendInfo
 		{
 			public string TrackName { get; set; }
-			public long TrackID { get; set; }
+			public int TrackID { get; set; }
 			public string TrackLength { get; set; }
 			public string TrackDisplayName { get; set; }
 			public string TrackDisplayShortName { get; set; }
@@ -19,9 +19,9 @@ namespace iRacingSDK
 			public string TrackCountry { get; set; }
 			public string TrackAltitude { get; set; }
 			public string TrackLatitude { get; set; }
-			public string TrackLongitude { get; set; }
+			public string Trackintitude { get; set; }
 			public string TrackNorthOffset { get; set; }
-			public long TrackNumTurns { get; set; }
+			public int TrackNumTurns { get; set; }
 			public string TrackPitSpeedLimit { get; set; }
 			public string TrackType { get; set; }
 			public string TrackWeatherType { get; set; }
@@ -33,33 +33,33 @@ namespace iRacingSDK
 			public string TrackWindDir { get; set; }
 			public string TrackRelativeHumidity { get; set; }
 			public string TrackFogLevel { get; set; }
-			public long TrackCleanup { get; set; }
-			public long TrackDynamicTrack { get; set; }
-			public long SeriesID { get; set; }
-			public long SeasonID { get; set; }
-			public long SessionID { get; set; }
-			public long SubSessionID { get; set; }
-			public long LeagueID { get; set; }
-			public long Official { get; set; }
-			public long RaceWeek { get; set; }
+			public int TrackCleanup { get; set; }
+			public int TrackDynamicTrack { get; set; }
+			public int SeriesID { get; set; }
+			public int SeasonID { get; set; }
+			public int SessionID { get; set; }
+			public int SubSessionID { get; set; }
+			public int LeagueID { get; set; }
+			public int Official { get; set; }
+			public int RaceWeek { get; set; }
 			public string EventType { get; set; }
 			public string Category { get; set; }
 			public string SimMode { get; set; }
-			public long TeamRacing { get; set; }
-			public long MinDrivers { get; set; }
-			public long MaxDrivers { get; set; }
+			public int TeamRacing { get; set; }
+			public int MinDrivers { get; set; }
+			public int MaxDrivers { get; set; }
 			public string DCRuleSet { get; set; }
-			public long QualifierMustStartRace { get; set; }
-			public long NumCarClasses { get; set; }
-			public long NumCarTypes { get; set; }
+			public int QualifierMustStartRace { get; set; }
+			public int NumCarClasses { get; set; }
+			public int NumCarTypes { get; set; }
 
 			public partial class _WeekendOptions
 			{
-				public long NumStarters { get; set; }
+				public int NumStarters { get; set; }
 				public string StartingGrid { get; set; }
 				public string QualifyScoring { get; set; }
 				public string CourseCautions { get; set; }
-				public long StandingStart { get; set; }
+				public int StandingStart { get; set; }
 				public string Restarts { get; set; }
 				public string WeatherType { get; set; }
 				public string Skies { get; set; }
@@ -68,13 +68,13 @@ namespace iRacingSDK
 				public string WeatherTemp { get; set; }
 				public string RelativeHumidity { get; set; }
 				public string FogLevel { get; set; }
-				public long Unofficial { get; set; }
+				public int Unofficial { get; set; }
 				public string CommercialMode { get; set; }
 				public string NightMode { get; set; }
-				public long IsFixedSetup { get; set; }
+				public int IsFixedSetup { get; set; }
 				public string StrictLapsChecking { get; set; }
-				public long HasOpenRegistration { get; set; }
-				public long HardcoreLevel { get; set; }
+				public int HasOpenRegistration { get; set; }
+				public int HardcoreLevel { get; set; }
 			}
 
 			public _WeekendOptions WeekendOptions { get; set; }
@@ -93,45 +93,45 @@ namespace iRacingSDK
 		{
 			public partial class _Sessions
 			{
-				public long SessionNum { get; set; }
+				public int SessionNum { get; set; }
 				public string SessionLaps { get; set; }
 				public string SessionTime { get; set; }
-				public long SessionNumLapsToAvg { get; set; }
+				public int SessionNumLapsToAvg { get; set; }
 				public string SessionType { get; set; }
 				public string SessionTrackRubberState { get; set; }
 				public partial class _ResultsPositions
 				{
-					public long Position { get; set; }
-					public long ClassPosition { get; set; }
-					public long CarIdx { get; set; }
-					public long Lap { get; set; }
+					public int Position { get; set; }
+					public int ClassPosition { get; set; }
+					public int CarIdx { get; set; }
+					public int Lap { get; set; }
 					public double Time { get; set; }
-					public long FastestLap { get; set; }
+					public int FastestLap { get; set; }
 					public double FastestTime { get; set; }
 					public double LastTime { get; set; }
-					public long LapsLed { get; set; }
-					public long LapsComplete { get; set; }
+					public int LapsLed { get; set; }
+					public int LapsComplete { get; set; }
 					public double LapsDriven { get; set; }
-					public long Incidents { get; set; }
-					public long ReasonOutId { get; set; }
+					public int Incidents { get; set; }
+					public int ReasonOutId { get; set; }
 					public string ReasonOutStr { get; set; }
 				}
 
 				public _ResultsPositions[] ResultsPositions { get; set; }
 				public partial class _ResultsFastestLap
 				{
-					public long CarIdx { get; set; }
-					public long FastestLap { get; set; }
+					public int CarIdx { get; set; }
+					public int FastestLap { get; set; }
 					public double FastestTime { get; set; }
 				}
 
 				public _ResultsFastestLap[] ResultsFastestLap { get; set; }
 				public double ResultsAverageLapTime { get; set; }
-				public long ResultsNumCautionFlags { get; set; }
-				public long ResultsNumCautionLaps { get; set; }
-				public long ResultsNumLeadChanges { get; set; }
-				public long ResultsLapsComplete { get; set; }
-				public long ResultsOfficial { get; set; }
+				public int ResultsNumCautionFlags { get; set; }
+				public int ResultsNumCautionLaps { get; set; }
+				public int ResultsNumLeadChanges { get; set; }
+				public int ResultsLapsComplete { get; set; }
+				public int ResultsOfficial { get; set; }
 			}
 
 			public _Sessions[] Sessions { get; set; }
@@ -143,11 +143,11 @@ namespace iRacingSDK
 		{
 			public partial class _Groups
 			{
-				public long GroupNum { get; set; }
+				public int GroupNum { get; set; }
 				public string GroupName { get; set; }
 				public partial class _Cameras
 				{
-					public long CameraNum { get; set; }
+					public int CameraNum { get; set; }
 					public string CameraName { get; set; }
 				}
 
@@ -161,27 +161,27 @@ namespace iRacingSDK
 
 		public partial class _RadioInfo
 		{
-			public long SelectedRadioNum { get; set; }
+			public int SelectedRadioNum { get; set; }
 			public partial class _Radios
 			{
-				public long RadioNum { get; set; }
-				public long HopCount { get; set; }
-				public long NumFrequencies { get; set; }
-				public long TunedToFrequencyNum { get; set; }
-				public long ScanningIsOn { get; set; }
+				public int RadioNum { get; set; }
+				public int HopCount { get; set; }
+				public int NumFrequencies { get; set; }
+				public int TunedToFrequencyNum { get; set; }
+				public int ScanningIsOn { get; set; }
 				public partial class _Frequencies
 				{
-					public long FrequencyNum { get; set; }
+					public int FrequencyNum { get; set; }
 					public string FrequencyName { get; set; }
-					public long Priority { get; set; }
-					public long CarIdx { get; set; }
-					public long EntryIdx { get; set; }
-					public long ClubID { get; set; }
-					public long CanScan { get; set; }
-					public long CanSquawk { get; set; }
-					public long Muted { get; set; }
-					public long IsMutable { get; set; }
-					public long IsDeletable { get; set; }
+					public int Priority { get; set; }
+					public int CarIdx { get; set; }
+					public int EntryIdx { get; set; }
+					public int ClubID { get; set; }
+					public int CanScan { get; set; }
+					public int CanSquawk { get; set; }
+					public int Muted { get; set; }
+					public int IsMutable { get; set; }
+					public int IsDeletable { get; set; }
 				}
 
 				public _Frequencies[] Frequencies { get; set; }
@@ -194,8 +194,8 @@ namespace iRacingSDK
 
 		public partial class _DriverInfo
 		{
-			public long DriverCarIdx { get; set; }
-			public long PaceCarIdx { get; set; }
+			public int DriverCarIdx { get; set; }
+			public int PaceCarIdx { get; set; }
 			public double DriverHeadPosX { get; set; }
 			public double DriverHeadPosY { get; set; }
 			public double DriverHeadPosZ { get; set; }
@@ -211,46 +211,46 @@ namespace iRacingSDK
 			public double DriverPitTrkPct { get; set; }
 			public double DriverCarEstLapTime { get; set; }
 			public string DriverSetupName { get; set; }
-			public long DriverSetupIsModified { get; set; }
+			public int DriverSetupIsModified { get; set; }
 			public string DriverSetupLoadTypeName { get; set; }
-			public long DriverSetupPassedTech { get; set; }
+			public int DriverSetupPassedTech { get; set; }
 			public partial class _Drivers
 			{
-				public long CarIdx { get; set; }
+				public int CarIdx { get; set; }
 				public string UserName { get; set; }
 				public string AbbrevName { get; set; }
 				public string Initials { get; set; }
-				public long UserID { get; set; }
-				public long TeamID { get; set; }
+				public int UserID { get; set; }
+				public int TeamID { get; set; }
 				public string TeamName { get; set; }
 				public string CarNumber { get; set; }
-				public long CarNumberRaw { get; set; }
+				public int CarNumberRaw { get; set; }
 				public string CarPath { get; set; }
-				public long CarClassID { get; set; }
-				public long CarID { get; set; }
-				public long CarIsPaceCar { get; set; }
-				public long CarIsAI { get; set; }
+				public int CarClassID { get; set; }
+				public int CarID { get; set; }
+				public int CarIsPaceCar { get; set; }
+				public int CarIsAI { get; set; }
 				public string CarScreenName { get; set; }
 				public string CarScreenNameShort { get; set; }
 				public string CarClassShortName { get; set; }
-				public long CarClassRelSpeed { get; set; }
-				public long CarClassLicenseLevel { get; set; }
+				public int CarClassRelSpeed { get; set; }
+				public int CarClassLicenseLevel { get; set; }
 				public string CarClassMaxFuel { get; set; }
 				public string CarClassMaxFuelPct { get; set; }
 				public string CarClassWeightPenalty { get; set; }
 				public string CarClassColor { get; set; }
-				public long IRating { get; set; }
-				public long LicLevel { get; set; }
-				public long LicSubLevel { get; set; }
+				public int IRating { get; set; }
+				public int LicLevel { get; set; }
+				public int LicSubLevel { get; set; }
 				public string LicString { get; set; }
 				public string LicColor { get; set; }
-				public long IsSpectator { get; set; }
+				public int IsSpectator { get; set; }
 				public string CarDesignStr { get; set; }
 				public string HelmetDesignStr { get; set; }
 				public string SuitDesignStr { get; set; }
 				public string CarNumberDesignStr { get; set; }
-				public long CarSponsor_1 { get; set; }
-				public long CarSponsor_2 { get; set; }
+				public int CarSponsor_1 { get; set; }
+				public int CarSponsor_2 { get; set; }
 				public string ClubName { get; set; }
 				public string DivisionName { get; set; }
 			}
@@ -264,7 +264,7 @@ namespace iRacingSDK
 		{
 			public partial class _Sectors
 			{
-				public long SectorNum { get; set; }
+				public int SectorNum { get; set; }
 				public double SectorStartPct { get; set; }
 			}
 

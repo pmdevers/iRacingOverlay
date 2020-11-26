@@ -14,15 +14,9 @@ namespace iRacingTimings.Shared.Components.Overlay
             
         }
 
-
-        public override void UpdateSession(object sender, DataSample data)
-        {
-            
-        }
-
-        public override void Update(object sender, DataSample data)
-        {
-            
-        }
+        //protected override void OnUpdate(object? sender, Telemetry e)
+        //{
+        //    InvokeAsync(() => StateHasChanged());
+        //}
     }
 }

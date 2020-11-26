@@ -261,34 +261,35 @@
                             }
                         }
 
-                        &.show-license, &.show-license-detail {
+                        &.show-license,
+                        &.show-license-detail {
                             > .data {
-                                .wp {
+                                &.wp {
                                     background: black;
                                     color: white;
                                 }
 
-                                .a {
+                                &.a {
                                     background: rgb(1, 83, 219);
                                     color: white;
                                 }
 
-                                .b {
+                                &.b {
                                     background: rgb(0, 199, 2);
                                     color: black;
                                 }
 
-                                .c {
+                                &.c {
                                     background: rgb(254, 236, 4);
                                     color: black;
                                 }
 
-                                .d {
+                                &.d {
                                     background: rgb(252, 138, 39);
                                     color: black;
                                 }
 
-                                .r {
+                                &.r {
                                     background: rgb(252, 7, 6);
                                     color: white;
                                 }
@@ -495,6 +496,10 @@
                 width: 3em;
                 margin-left: 2px;
                 font-size: $very-small-font-size;
+            }
+
+            &.show-lap-time > .driver > .container > .last-lap-time-wrapper {
+                width: 5.5em;
             }
 
             &.show-flag-7x5 > .driver > .container > .flag-wrapper-7x5 {

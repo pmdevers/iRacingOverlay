@@ -14,29 +14,33 @@ namespace iRacingTimings.Shared.Components.Overlay
         public ClassMapper DataClassMapper { get; } = new ClassMapper();
 
         [Parameter]
-        public TimingModel Driver { get; set; }
+        public Data.Drivers.Driver Driver { get; set; }
 
         [Parameter]
         public bool ShowData { get; set; }
+        [Parameter]
         public bool ShowLastLaptime { get; set; }
+        [Parameter]
+        public bool ShowLicense { get; set; }
 
         public DriverBase()
         {
             ClassMapper.Add("driver-wrapper")
-                .If("position-displays-selected-driver", () => Driver.Selected)
+                .If("position-displays-selected-driver", () => Driver.IsCurrentDriver)
                 .If("allow-driver", () => true)
                 .If("show-driver", () => true)
-                .If("show-pit", () => Driver.OnPitRoad)
-                .If("show-lap-time", () => !Driver.OnPitRoad && Driver.DistDegree < 10 && Driver.DistDegree > 0)
-                .If("show-flag-7x", () => Driver.IsFinished)
-                .If("odd", () => Driver.Position % 2 > 0)
-                .If("even", () => Driver.Position % 2 == 0);
+                .If("show-pit", () => Driver.Pit.InPitLane)
+                .If("show-lap-time", () => !Driver.Pit.InPitLane && Driver.Live.LapDistance < 10 && Driver.Live.LapDistance > 0)
+                //.If("show-flag-7x", () => Driver.IsFinished)
+                .If("odd", () => Driver.Live.Position % 2 > 0)
+                .If("even", () => Driver.Live.Position % 2 == 0);
 
             DataClassMapper.Add("data-wrapper")
                 .If("allow-data", () => ShowData)
-                .If("show-last-lap-time", () => ShowLastLaptime);
+                .If("show-last-lap-time", () => ShowLastLaptime)
+                .If("show-license", () => ShowLicense);
 
-            StyleMapper.GetIf(() => $"transform: TranslateY({Driver.Position * 28}px);", () => Driver != null);
+            StyleMapper.GetIf(() => $"transform: TranslateY({Driver.Live.Position * 28}px);", () => Driver != null);
         }
     }
 }

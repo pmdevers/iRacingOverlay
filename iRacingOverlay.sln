@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iRacingSDK", "src\iRacingSD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iRacingTimings", "src\iRacingTimings\iRacingTimings.csproj", "{2E7713CB-E05E-40A5-B561-85920D91A905}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iRacingOverlay.Tests", "tests\iRacingOverlay.Tests\iRacingOverlay.Tests.csproj", "{4CFB87EC-6DD6-4381-B674-6C8686BB8E50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{2E7713CB-E05E-40A5-B561-85920D91A905}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E7713CB-E05E-40A5-B561-85920D91A905}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E7713CB-E05E-40A5-B561-85920D91A905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CFB87EC-6DD6-4381-B674-6C8686BB8E50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CFB87EC-6DD6-4381-B674-6C8686BB8E50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CFB87EC-6DD6-4381-B674-6C8686BB8E50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CFB87EC-6DD6-4381-B674-6C8686BB8E50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{02B6FB10-2CA6-4188-BE46-62FA98C6988D} = {065FB7D2-C84E-42D1-B4AE-0296E7CAAC82}
 		{2E7713CB-E05E-40A5-B561-85920D91A905} = {065FB7D2-C84E-42D1-B4AE-0296E7CAAC82}
+		{4CFB87EC-6DD6-4381-B674-6C8686BB8E50} = {97EB99C9-EF38-4F54-859E-055931C521B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A48DCBB4-8524-4389-8ACB-A2AD995D979D}

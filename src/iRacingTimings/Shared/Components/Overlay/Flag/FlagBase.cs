@@ -25,14 +25,7 @@ namespace iRacingTimings.Shared.Components.Overlay {
                 .If("flag-7x5", () => Scale == FlagScale.flag7x5);
         }
 
-        protected override void OnParametersSet()
-        {
-           
-
-            base.OnParametersSet();
-        }
     }
-
 
     public enum FlagScale
     {

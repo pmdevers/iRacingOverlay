@@ -5,23 +5,25 @@
 <div class="@ClassMapper.AsString()" style="@StyleMapper.AsString()">
     <div class="driver">
         <div class="driver-background"></div>
-        <Position>@Driver.Position</Position>
-        <ColorStripe Color="@(@Driver.TrackSurf == TrackLocation.OffTrack ? "red" : Driver.ClassColor)"></ColorStripe>
+        <Position>@Driver.Live.Position</Position>
+        <ColorStripe Color="@(Driver.Car.ClassColor)"></ColorStripe>
 
         <div class="container">
             <div class="name-wrapper">
-                <div class="name">@HttpUtility.HtmlDecode(Driver.Name)</div>
+                <div class="name">
+                    @Driver.Name
+                </div>
             </div>
             
             <div class="@DataClassMapper.AsString()">
-                <div class="data2">@Driver.LastLap.Seconds().ToLapTimeString()</div>
-                <div class="data"></div>
+                <div class="data @Driver.License.Name.ToLower()">@Driver.License.Display</div>
+                <div class="data2"></div>
                 <div class="car-logo"></div>
                 <div class="flag"></div>
             </div>
             
             <div class="last-lap-time-wrapper">
-                <div class="last-lap-time">@Driver.LastLap.Seconds().ToLapTimeString()</div>
+                <div class="last-lap-time"></div>
             </div>
             <Flag Id="flagWrapper7x5" Scale="FlagScale.flag7x5"></Flag>
             <div class="pit-wrapper">

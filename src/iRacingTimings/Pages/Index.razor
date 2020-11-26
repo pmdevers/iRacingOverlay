@@ -1,52 +1,50 @@
 ﻿@page "/"
 
-@inject TimingsService TimingsService;
-
 <ul>
-    @foreach (var driver in TimingsService.Timings)
+    @*@foreach (var driver in TimingsService.Timings)
     {
         <li>@driver.DriverName</li>
         <li>@driver.LastLap.Seconds().ToString(@"mm\:ss\.fff")</li>
         <li>@driver.DistDegree</li>
-    }
+    }*@
 </ul>
 
 @code
 {
-    private readonly iRacingEvents _events = new iRacingEvents();
-    private bool isConnected;
+    //private readonly iRacingEvents _events = new iRacingEvents();
+    //private bool isConnected;
 
-    protected override void OnInitialized()
-    {
-        _events.NewData += Update;
-        _events.NewSessionData += UpdateSession;
-        _events.Connected += Connected;
+    //protected override void OnInitialized()
+    //{
+    //    _events.NewData += Update;
+    //    _events.NewSessionData += UpdateSession;
+    //    _events.Connected += Connected;
 
-        _events.StartListening();
+    //    _events.StartListening();
 
-        base.OnInitialized();
-    }
+    //    base.OnInitialized();
+    //}
 
-    private void Connected()
-    {
-        isConnected = true;
-    }
+    //private void Connected()
+    //{
+    //    isConnected = true;
+    //}
 
-    private void UpdateSession(DataSample data)
-    {
-        if (isConnected)
-        {
-            TimingsService.UpdateSession(data);
-            StateHasChanged();
-        }
-    }
+    //private void UpdateSession(DataSample data)
+    //{
+    //    if (isConnected)
+    //    {
+    //        TimingsService.UpdateSession(data);
+    //        StateHasChanged();
+    //    }
+    //}
 
-    private void Update(DataSample dataSample)
-    {
-        if (isConnected)
-        {
-            TimingsService.Update(dataSample);
-            StateHasChanged();
-        }
-    }
+    //private void Update(DataSample dataSample)
+    //{
+    //    if (isConnected)
+    //    {
+    //        TimingsService.Update(dataSample);
+    //        StateHasChanged();
+    //    }
+    //}
 }

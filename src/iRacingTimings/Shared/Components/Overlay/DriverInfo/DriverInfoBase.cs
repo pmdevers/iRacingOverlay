@@ -26,7 +26,7 @@ namespace iRacingTimings.Shared.Components.Overlay
         public string FlagImage { get; set; }
 
 
-        public Car Car { get; set; }
+        public Data.Drivers.Driver Car { get; set; }
 
         public DriverInfoBase() : base("driver-details")
         {
@@ -36,27 +36,31 @@ namespace iRacingTimings.Shared.Components.Overlay
 
         }
 
-        public override void UpdateSession(object sender, DataSample data)
-        {
+        //public override void UpdateSession(object sender, DataSample data)
+        //{
 
-        }
+        //}
 
-        public override void Update(object sender, DataSample data)
-        {
-            Car = new Car(data.Telemetry, data.Telemetry.CamCarIdx);
+        //public override void Update(object sender, DataSample data)
+        //{
+        //    Car = new Data.Driver(data.Telemetry, data.Telemetry.CamCarIdx);
 
-            Position = Car.OfficialPostion;
-            Color = Car.Details.Color;
-            FirstName = Car.Details.FirstName;
-            LastName = Car.Details.LastName;
-            Suffix = Car.Details.Suffix;
+        //    Position = Car.OfficialPostion;
+        //    Color = Car.Details.Color;
+        //    FirstName = Car.Details.FirstName;
+        //    LastName = Car.Details.LastName;
+        //    Suffix = Car.Details.Suffix;
             
-            FlagImage = $"./img/clubs/{Car.Details.ClubName}.svg";
-            //Gain = 
+        //    FlagImage = $"./img/clubs/{Car.Details.ClubName}.svg";
+        //    //Gain = 
 
-            StateHasChanged();
-        }
+        //    StateHasChanged();
+        //}
 
-        
+
+        //protected override void OnUpdate(object? sender, Telemetry e)
+        //{
+        //    StateHasChanged();
+        //}
     }
 }

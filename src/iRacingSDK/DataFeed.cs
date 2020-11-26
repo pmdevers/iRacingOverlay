@@ -13,16 +13,16 @@ namespace iRacingSDK
 {
 	public class DataFeed
 	{
-		MemoryMappedViewAccessor accessor;
+        readonly MemoryMappedViewAccessor _accessor;
 
 		public DataFeed(MemoryMappedViewAccessor accessor)
 		{
-			this.accessor = accessor;
+			_accessor = accessor;
 		}
 
 		public unsafe DataSample GetNextDataSample(int requestedTickCount, bool logging)
 		{
-			var headers = accessor.AcquirePointer(ptr =>
+			var headers = _accessor.AcquirePointer(ptr =>
 			{
 				var a = ReadHeader(ptr);
 				var b = ReadVariableHeaders(a, ptr);
@@ -72,23 +72,23 @@ namespace iRacingSDK
 			return varHeaders;
 		}
 
-		int sessionLastInfoUpdate = -2;
-		SessionData lastSessionInfo;
+		int _sessionLastInfoUpdate = -2;
+		SessionData _lastSessionInfo;
 
 		DataSample DisconnectedSample()
 		{
-			lastSessionInfo = null;
-			sessionLastInfoUpdate = -2;
+			_lastSessionInfo = null;
+			_sessionLastInfoUpdate = -2;
 			return DataSample.YetToConnected;
 		}
 
 		SessionData ReadSessionInfo(iRSDKHeader header)
 		{
-			if (header.sessionInfoUpdate == sessionLastInfoUpdate)
-				return lastSessionInfo;
+			if (header.sessionInfoUpdate == _sessionLastInfoUpdate)
+				return _lastSessionInfo;
 
-			sessionLastInfoUpdate = header.sessionInfoUpdate;
-			Trace.WriteLine("New Session data retrieved from iRacing. {0}".F(sessionLastInfoUpdate), "DEBUG");
+			_sessionLastInfoUpdate = header.sessionInfoUpdate;
+			Trace.WriteLine("New Session data retrieved from iRacing. {0}".F(_sessionLastInfoUpdate), "DEBUG");
 
 			var t = Task.Factory.StartNew(() =>
 			{
@@ -96,19 +96,19 @@ namespace iRacingSDK
 				try
 				{
 					var sessionInfoData = new byte[header.sessionInfoLen];
-					accessor.ReadArray<byte>(header.sessionInfoOffset, sessionInfoData, 0, header.sessionInfoLen);
+					_accessor.ReadArray<byte>(header.sessionInfoOffset, sessionInfoData, 0, header.sessionInfoLen);
 					var sessionInfoString = System.Text.Encoding.UTF7.GetString(sessionInfoData);
 
 					var length = sessionInfoString.IndexOf('\0');
 					if (length == -1)
 					{
-						lastSessionInfo = null;
+						_lastSessionInfo = null;
 						return;
 					}
 
 					sessionInfoString = sessionInfoString.Substring(0, sessionInfoString.IndexOf('\0'));
 					Trace.WriteLine(sessionInfoString, "DEBUG");
-					lastSessionInfo = DeserialiseSessionInfo(sessionInfoString, header.sessionInfoUpdate);
+					_lastSessionInfo = DeserialiseSessionInfo(sessionInfoString, header.sessionInfoUpdate);
 				}
 				catch (Exception e)
 				{
@@ -117,10 +117,10 @@ namespace iRacingSDK
 				}
 			});
 
-			if (lastSessionInfo == null)
+			if (_lastSessionInfo == null)
 				t.Wait();
 
-			return lastSessionInfo;
+			return _lastSessionInfo;
 		}
 
 		static SessionData DeserialiseSessionInfo(string sessionInfoString, int sessionInfoUpdate)
@@ -158,8 +158,8 @@ namespace iRacingSDK
 				return null;
 			}
 
-			var values = ReadAllValues(accessor, buf.bufOffset, varHeaders);
-			var latestHeader = accessor.AcquirePointer(ptr => ReadHeader(ptr));
+			var values = ReadAllValues(_accessor, buf.bufOffset, varHeaders);
+			var latestHeader = _accessor.AcquirePointer(ptr => ReadHeader(ptr));
 
 			if (latestHeader.HasChangedSinceReading(buf))
 			{

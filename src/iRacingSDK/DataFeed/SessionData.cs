@@ -28,7 +28,12 @@ namespace iRacingSDK
 		{
 			public partial class _Drivers
 			{
+
+
 				public bool IsPaceCar => CarIdx == 0;
+                public string FirstName => UserName.Split(" ").First();
+                public string LastName => UserName.Split(" ").Last();
+
             }
 
             private _Drivers[] _competingDrivers = null;
