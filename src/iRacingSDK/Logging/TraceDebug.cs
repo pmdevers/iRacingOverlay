@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 
 namespace iRacingSDK.Logging
@@ -8,22 +9,22 @@ namespace iRacingSDK.Logging
 
 		public static void WriteLine(string value, params object[] args)
 		{
-			Trace.WriteLine(value.F(args), Category);
+			Trace.WriteLine(string.Format(value, args), Category);
 		}
 
 		public static void Write(string value, params object[] args)
 		{
-			Trace.Write(value.F(args), Category);
+			Trace.Write(string.Format(value, args), Category);
 		}
 
 		public static void WriteLineIf(bool condition, string value, params object[] args)
 		{
-			Trace.WriteLineIf(condition, value.F(args), Category);
+			Trace.WriteLineIf(condition, string.Format(value, args), Category);
 		}
 
 		public static void WriteIf(bool condition, string value, params object[] args)
 		{
-			Trace.WriteIf(condition, value.F(args), Category);
+			Trace.WriteIf(condition, string.Format(value, args), Category);
 		}
 	}
 }

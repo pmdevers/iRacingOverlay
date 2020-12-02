@@ -1,52 +1,36 @@
 ﻿@page "/"
 
-@inject TimingsService TimingsService;
+@{
+}
+<table>
+@foreach (var driver in iRacing.Drivers.DriversOnly().OrderBy(x=>x.Live.Position))
+{
+    <tr>
+        <td>
+            @driver.Live.Position
+        </td>
+        <td>
+            @driver.Name
+        </td>
+    </tr>
+    
+}
+</table>
 
 <ul>
-    @foreach (var driver in TimingsService.Timings)
-    {
-        <li>@driver.DriverName</li>
-        <li>@driver.LastLap.Seconds().ToString(@"mm\:ss\.fff")</li>
-        <li>@driver.DistDegree</li>
-    }
+   <BFUDefaultButton OnClick="Click"> Click </BFUDefaultButton>
 </ul>
 
 @code
 {
-    private readonly iRacingEvents _events = new iRacingEvents();
-    private bool isConnected;
 
     protected override void OnInitialized()
     {
-        _events.NewData += Update;
-        _events.NewSessionData += UpdateSession;
-        _events.Connected += Connected;
-
-        _events.StartListening();
-
         base.OnInitialized();
     }
 
-    private void Connected()
+    private void Click(MouseEventArgs obj)
     {
-        isConnected = true;
-    }
-
-    private void UpdateSession(DataSample data)
-    {
-        if (isConnected)
-        {
-            TimingsService.UpdateSession(data);
-            StateHasChanged();
-        }
-    }
-
-    private void Update(DataSample dataSample)
-    {
-        if (isConnected)
-        {
-            TimingsService.Update(dataSample);
-            StateHasChanged();
-        }
+        iRacing.Replay.MoveToStart();
     }
 }

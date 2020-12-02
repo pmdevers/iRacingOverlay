@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using ElectronNET.API;
-using iRacingTimings.Data;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

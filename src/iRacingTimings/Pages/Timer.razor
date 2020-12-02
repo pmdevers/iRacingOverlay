@@ -1,0 +1,53 @@
+﻿@page "/timer"
+@using Microsoft.AspNetCore.WebUtilities
+@using iRacingSDK.Messaging
+@inject NavigationManager NavManager
+
+@layout EmptyLayout;
+
+<p>@TimeLeft.ToString(@"h\:mm\:ss")</p>
+
+@code{
+
+    TimeSpan TimeLeft = new TimeSpan(0, 0, 15);
+    string displayText = "";
+    TimeSpan toTime;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var uri = NavManager.ToAbsoluteUri(NavManager.Uri);
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("totime", out var totime))
+        {
+            var timeNow = DateTime.Now.TimeOfDay;
+
+            toTime = TimeSpan.Parse(totime);
+
+            TimeLeft = toTime - DateTime.Now.TimeOfDay;
+        }
+
+        Timer1();
+        await base.OnInitializedAsync();
+    }
+
+
+    async Task Timer1()
+    {
+        while (TimeLeft > new TimeSpan())
+        {
+            await Task.Delay(1000);
+            TimeLeft = TimeLeft.Subtract(new TimeSpan(0, 0, 1));
+            StateHasChanged();
+        }
+
+
+        await AfterTime();
+        StateHasChanged();
+    }
+
+    Task AfterTime()
+    {
+        displayText = "Time Expire";
+        TimeLeft = new TimeSpan(0, 0, 15);
+        return Task.CompletedTask;
+    }
+}

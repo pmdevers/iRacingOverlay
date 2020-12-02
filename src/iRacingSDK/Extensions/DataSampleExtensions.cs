@@ -5,11 +5,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using iRacingSDK.Data;
 using iRacingSDK.Logging;
+using iRacingSDK.Messaging;
 
 namespace iRacingSDK
 {
-	public static class DataSampleExtensions
+    internal static class DataSampleExtensions
 	{
 		public static IEnumerable<DataSample> AtSpeed(this IEnumerable<DataSample> samples, int replaySpeed,
 			Func<DataSample, bool> fn)
@@ -68,7 +70,7 @@ namespace iRacingSDK
 		/// <param name="iRacingConnection"></param>
 		/// <param name="maxBufferLength"></param>
 		/// <returns></returns>
-		public static IEnumerable<DataSample> GetBufferedDataFeed(this iRacingConnection iRacingConnection,
+		internal static IEnumerable<DataSample> GetBufferedDataFeed(this iRacingConnection iRacingConnection,
 			int maxBufferLength = 10)
 		{
 			return _GetBufferedDataFeed(iRacingConnection, maxBufferLength).WithLastSample();

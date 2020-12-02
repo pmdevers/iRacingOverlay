@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace iRacingSDK
+namespace iRacingSDK.Messaging
 {
-	public enum DisplayUnits
+    public enum DisplayUnits
 	{
 		EnglishImperial = 0,
 		Metric = 1

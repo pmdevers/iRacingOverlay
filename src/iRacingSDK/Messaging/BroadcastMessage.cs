@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace iRacingSDK
+namespace iRacingSDK.Messaging
 {
 	/// <summary>
 	/// Remote controll the sim by sending these windows messages
@@ -54,7 +50,7 @@ namespace iRacingSDK
 		/// <summary>
 		/// The chat comand : ChatCommandMode, subCommand, unused
 		/// </summary>
-		ChatComand,
+		ChatCommand,
 
 		/// <summary>
 		/// The pit command : PitCommandMode, parameter
@@ -63,7 +59,7 @@ namespace iRacingSDK
 		PitCommand,
 
 		/// <summary>
-		/// The Telemetry Command : TelemCommandMode, ...
+		/// The OnTelemetry Command : TelemCommandMode, ...
 		/// You can call this any time, but telemtry only records when driver is in there car
 		/// </summary>
 		BroadcastTelemetryCommand,

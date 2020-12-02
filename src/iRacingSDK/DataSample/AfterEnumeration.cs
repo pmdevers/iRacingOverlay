@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using iRacingSDK.Data;
 using iRacingSDK.Logging;
 
 namespace iRacingSDK
 {
-	public class AfterEnumeration
+    internal class AfterEnumeration
 	{
 		readonly IEnumerable<DataSample> _samples;
 		readonly TimeSpan _period;
@@ -57,7 +58,7 @@ namespace iRacingSDK
 				{
 					if (!conditionMet)
 					{
-						TraceDebug.WriteLine("{0}: Condition met".F(data.Telemetry.SessionTimeSpan));
+						TraceDebug.WriteLine($"{data.Telemetry.SessionTimeSpan}: Condition met");
 						conditionMet = true;
 						conditionMetAt = data.Telemetry.SessionTimeSpan;
 					}
@@ -65,7 +66,7 @@ namespace iRacingSDK
 				else
 				{
 					if (conditionMet)
-						TraceDebug.WriteLine("{0}: Condition unmet".F(data.Telemetry.SessionTimeSpan));
+						TraceDebug.WriteLine($"{data.Telemetry.SessionTimeSpan}: Condition unmet");
 					conditionMet = false;
 				}
 

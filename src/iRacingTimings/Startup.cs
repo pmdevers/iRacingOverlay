@@ -15,7 +15,6 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using iRacingTimings.Data;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace iRacingTimings
@@ -37,8 +36,6 @@ namespace iRacingTimings
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
-            services.AddSingleton<iRacingService>();
-            services.AddSingleton<TimingsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,6 +63,8 @@ namespace iRacingTimings
                 endpoints.MapFallbackToPage("/_Host");
             });
 
+
+            iRacing.StartListening();
             Task.Run(async () => await Electron.WindowManager.CreateBrowserViewAsync());
             Task.Run(async () => await Electron.WindowManager.CreateWindowAsync(new BrowserWindowOptions
             {

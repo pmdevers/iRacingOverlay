@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace iRacingSDK
+namespace iRacingSDK.Messaging
 {
 	public enum PitCommandMode
 	{

@@ -4,31 +4,31 @@
 <div id="stateHeader" class="@ClassMapper.AsString()">
     <div id="container" class="container">
         <Flag Id="flagWrapper1" Scale="FlagScale.flag9x5"></Flag>
-        <div id="type" class="type">@SessionType - </div>
-        @if (IsRace)
+        <div id="type" class="type">@iRacing.Current.SessionType - </div>
+        @if (iRacing.Current != null && iRacing.Current.IsRace)
         {
-            @if (IsLimitedSessionLaps)
+            @if (iRacing.Current.IsLimitedSessionLaps)
             {
-                <div id="laps" class="laps">@Lap / @Laps - </div>
+                <div id="laps" class="laps">@iRacing.Telemetry.Lap / @iRacing.Current._SessionLaps</div>
             }
-            else if (Lap > 0)
+            else if (iRacing.Telemetry.Lap > 0)
             {
-                <div id="laps" class="laps">Lap @Lap - </div>
+                <div id="laps" class="laps">Lap @iRacing.Telemetry.Lap - </div>
             }
 
-            @if (IsLimitedTime)
+            @if (iRacing.Current.IsLimitedTime)
             {
-                <div id="time" class="time">@TimeRemain / @Time </div>
+                <div id="time" class="time">@iRacing.Telemetry.SessionTimeRemain </div>
             }
             else
             {
-                <div id="time" class="time">@TimeRemain </div>
+    <div id="time" class="time">@iRacing.Telemetry.SessionTimeRemain </div>
             }
 
         }
         else
         {
-            <div id="time" class="time"> @TimeRemain </div>
+    <div id="time" class="time">@iRacing.Telemetry.SessionTimeRemain</div>
         }
         <Flag Id="flagWrapper2" Scale="FlagScale.flag9x5"></Flag>
     </div>

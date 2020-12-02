@@ -1,4 +1,4 @@
-namespace iRacingSDK
+namespace iRacingSDK.Messaging
 {
 	public enum WeatherType
 	{

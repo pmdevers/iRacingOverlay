@@ -1,6 +1,5 @@
 ﻿@page "/overlay"
 
-@inject iRacingService IRacingService
 @layout Overlay
 
 <StateHeader Visible="true"></StateHeader>
@@ -18,7 +17,8 @@
 {
     protected override void OnInitialized()
     {
-        IRacingService.StateChanged += StateHasChanged;
+        iRacing.StartListening();
         base.OnInitialized();
     }
+
 }

@@ -1,24 +1,23 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
+using iRacingSDK.Data;
 using iRacingSDK.Logging;
 
-namespace iRacingSDK
+namespace iRacingSDK.Messaging
 {
 	public class NoWaitReplay : Replay
 	{
-		public NoWaitReplay(iRacingConnection iRacingInstance)
+		internal NoWaitReplay(iRacingConnection iRacingInstance)
 			: base(iRacingInstance)
 		{
 		}
 
-		protected override void SendMessage(BroadcastMessage message, short var1 = 0, int var2 = 0)
+		protected void SendMessage(BroadcastMessage message, short var1 = 0, int var2 = 0)
 		{
 			var msgVar1 = FromShorts((short)message, var1);
 
-			if (!Win32.Messages.SendNotifyMessage(Win32.Messages.HWND_BROADCAST, messageId, msgVar1, var2))
+			if (!Win32.Messages.SendNotifyMessage(Win32.Messages.HWND_BROADCAST, MessageId, msgVar1, var2))
 				throw new Exception(String.Format("Error in broadcasting message {0}", message));
 		}
 
@@ -29,23 +28,23 @@ namespace iRacingSDK
 
 	public class Replay : iRacingMessaging
 	{
-		iRacingConnection iRacingInstance;
+        private readonly iRacingConnection _iRacingInstance;
 
-		public Replay(iRacingConnection iRacingInstance)
+		internal Replay(iRacingConnection iRacingInstance)
 		{
-			this.iRacingInstance = iRacingInstance;
+			this._iRacingInstance = iRacingInstance;
 		}
 
 		public NoWaitReplay NoWait
 		{
 			get
 			{
-				return new NoWaitReplay(iRacingInstance);
+				return new NoWaitReplay(_iRacingInstance);
 			}
 		}
 		public Func<T, T2> WaitOn<T, T2>(Action action, Func<T, T2> testFn)
 		{
-			return x => testFn(x);
+			return testFn;
 		}
 
 		public void SetSpeed(int p)
@@ -238,7 +237,7 @@ namespace iRacingSDK
 		{
 			const int wait = 60000;
 
-			if (iRacingInstance.IsRunning)
+			if (_iRacingInstance.IsRunning)
 				return null;
 
 			var timeout = DateTime.Now + TimeSpan.FromMilliseconds(wait);

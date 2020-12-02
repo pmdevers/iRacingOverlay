@@ -2,7 +2,7 @@ using System.IO.MemoryMappedFiles;
 
 namespace iRacingSDK
 {
-	public static class MemoryMappedViewAccessorExtensions
+    internal static class MemoryMappedViewAccessorExtensions
 	{
 		public unsafe delegate T MyFn<out T>(byte* ptr);
 

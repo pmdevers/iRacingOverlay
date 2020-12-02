@@ -4,7 +4,7 @@ using System.Text;
 
 namespace iRacingSDK
 {
-	public static class iRSDKHeaderExtensions
+	internal static class iRSDKHeaderExtensions
 	{
 		public static bool HasChangedSinceReading(this iRSDKHeader header, VarBufWithIndex buf)
 		{

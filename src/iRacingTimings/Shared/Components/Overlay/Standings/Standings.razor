@@ -1,8 +1,8 @@
 ﻿@namespace iRacingTimings.Shared.Components.Overlay
 @inherits StandingsBase
 <div id="standings" class="@ClassMapper.AsString()" style="@StyleMapper.AsString()">
-    @foreach (var driver in Timings.Take(25))
+    @foreach (var driver in iRacing.Drivers)
     {
-        <Driver Driver="@driver" ></Driver>
+        <Driver Item="@driver"></Driver>
     }
 </div>

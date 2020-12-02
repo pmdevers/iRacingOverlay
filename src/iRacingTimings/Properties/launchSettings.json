@@ -25,6 +25,7 @@
     "iRacingTimings": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "/overlay",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

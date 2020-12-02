@@ -1,4 +1,4 @@
-namespace iRacingSDK
+namespace iRacingSDK.Messaging
 {
 	/// <summary>
 	/// Search replay tape for events

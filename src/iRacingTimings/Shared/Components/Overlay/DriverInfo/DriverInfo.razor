@@ -1,21 +1,21 @@
 ﻿@namespace iRacingTimings.Shared.Components.Overlay
-@inherits DriverInfoBase
+@inherits DriverBase
 
 
 <div id="driverDetails" class="@ClassMapper.AsString()" style="@StyleMapper.AsString()">
     <div id="dataWrapper" class="data-wrapper driver-wrapper">
         <div id="upperDataWrapper" class="upper-data-wrapper driver">
-            <Position>@Position</Position>
-            <ColorStripe Color="@Color"></ColorStripe>
+            <Position></Position>
+            <ColorStripe Color=""></ColorStripe>
             <div id="container" class="container">
                 <div id="nameWrapper" class="name-wrapper">
-                    <div id="firstName" class="first-name">@FirstName</div>
-                    <div id="lastName" class="last-name">@LastName</div>
-                    <div id="suffix" class="suffix">@Suffix</div>
+                    <div id="firstName" class="first-name"></div>
+                    <div id="lastName" class="last-name"></div>
+                    <div id="suffix" class="suffix"></div>
                 </div>
-                <img id="flag" class="flag" src="@FlagImage">
-                <CarNumber Car="@Car"></CarNumber>
-                <div id="gain" class="gain">@Gain</div>
+                <img id="flag" class="flag" src="">
+                <CarNumber Car=""></CarNumber>
+                <div id="gain" class="gain"></div>
             </div>
         </div>
         <div id="middleDataWrapper" class="middle-data-wrapper">

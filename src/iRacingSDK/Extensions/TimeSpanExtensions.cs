@@ -3,7 +3,7 @@ using System.Text;
 
 namespace iRacingSDK
 {
-	public static class TimeSpanExtensions
+	internal static class TimeSpanExtensions
 	{
 		public static TimeSpan Seconds(this int seconds)
 		{

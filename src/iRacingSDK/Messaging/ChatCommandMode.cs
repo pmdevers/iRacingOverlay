@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace iRacingSDK
+namespace iRacingSDK.Messaging
 {
-	public enum ChatCommandMode
+    internal enum ChatCommandMode
 	{
 		/// <summary>
 		/// pass in a number from 1-15 representing the chat macro to launch

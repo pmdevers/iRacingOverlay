@@ -309,7 +309,7 @@
         .overlay > .standings > .driver-wrapper > .driver > .container > .name-wrapper {
           display: inline-block;
           overflow: hidden;
-          width: 185px;
+          width: 200px;
           height: 27px;
           transform: translateX(-300px);
           transition: width 0.2s ease-in-out, transform 0.4s ease-in-out, opacity 0.4s ease-in-out;

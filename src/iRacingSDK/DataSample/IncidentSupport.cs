@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using iRacingSDK.Data;
 using iRacingSDK.Logging;
 
 namespace iRacingSDK
 {
-	public static class IncidentsSupport
+	internal static class IncidentsSupport
 	{
 		/// <summary>
 		/// Pauses the game and then uses the 'toNext' Action to send a message to the game to advance through all incidents
